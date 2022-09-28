@@ -1,0 +1,47 @@
+.wrap{
+  width: 800px;
+  margin: 0 auto;
+}
+
+.tap-menu ul{
+  margin: 20px 0 0 10px;
+  height: 50px;
+  border-bottom: 3px solid gray;
+  box-sizing: border-box;
+}
+.tap-menu ul li{
+  width: 120px;
+  height: 47px;
+  text-align: center;
+  float: left;
+}
+.tap-menu ul li a{
+  display: block;
+  width: 120px;
+  line-height: 47px;
+}
+.on{
+  background-color: #eeeeee90;
+  color: #f7323f;
+  font-weight: bold;
+  border-bottom: 3px solid #f7323f;
+}
+
+/* 콘텐츠 */
+.event-wrap{
+  box-sizing: border-box;
+  padding: 20px;
+  line-height:30px;
+}
+.event-wrap ul li{
+  margin: 0 0 40px;
+}
+.event-title{
+  font-size: 24px;
+}
+.event-period{
+  color: #999;
+}
+.event-img img{
+  width: 100%;
+}

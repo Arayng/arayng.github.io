@@ -72,46 +72,4 @@ header{
   left: 20%;
 }
 
-/* 메인 영역 */
-.main-wrap{
-  width: 1200px;
-  /* height: 1000px; 가이드 */
-  margin: 60px auto 0;
-  display: flex;
-}
 
-/* lnb */
-.lnb{
-  width: 300px;
-  height: 100%;
-  padding-left: 20px;
-  box-sizing: border-box;
-}
-.lnb ul li{
-  width: 100%;
-}
-.lnb ul li a{
-  display: block;
-  height: 50px;
-  font-size: 22px;
-  line-height: 50px;
-  box-sizing: border-box;
-}
-
-.on{
-  margin-left: 60px;
-  padding-left: 20px;
-  color: #f7323f;
-  background-color: #eee;
-}
-
-/* content */
-.content{
-  width: 900px;
-  background-color: #eee;
-  padding: 15px 30px 30px;
-  font-size: 22px;
-  box-sizing: border-box;
-  position: relative;
-}
-h3{ font-size: 22px; width: 110px;}
