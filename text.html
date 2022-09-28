@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .backgr{width: 100%; height: 2000px; margin: 200px auto; background-color: #8ad2e6; border-top: 1px solid transparent; position: relative;}
+    .bg{width: 2060px; height: 700px; overflow: hidden; vertical-align: bottom; border: 1px solid red; position: relative; left: 50%; transform: translate(-50%); transition: all 1s;}
+    .pager_bg{ width: 800px; height: 7px; border-radius: 7px; background-color: #fff; margin: 200px auto; position: relative;}
+    .pager_on{ width: 160px; height: 7px; border-radius: 7px; background-color: #5694f0; position: absolute; left: 200px;}
+    .box{width: 300px; height: 300px; background-color: #eee; float: left; margin: 0 20px; border-radius: 50% 50% 0 0 ; }
+    .on{width: 660px; height: 570px;}
+  </style>
+</head>
+<body>
+  <div class="backgr">
+    <div class="pager_bg">
+      <div class="pager_on"></div>
+    </div>
+    <div class="bg">
+    <div class="box cont1"></div>
+    <div class="box cont2"></div>
+    <div class="box cont3 on"></div>
+    <div class="box cont4"></div>
+    <div class="box cont5"></div>
+  </div>
+  </div>
+</body>
+</html>

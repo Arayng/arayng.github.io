@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 정보</title>
+  <link rel="stylesheet" href="css/mylayout.css">
+  <link rel="stylesheet" href="css/mymenu.css">
+</head>
+<body>
+  <header>
+    <div class="header-wrap">
+      <h1 class="logo"><a href="index.html">여기어때</a></h1>
+      
+      <h2 class="hide">상단 메뉴</h2>
+      <ul class="top-menu">
+        <li><a href="#" class="search-btn">검색</a></li>
+        <li><a href="#" class="top-menu1">내주변</a></li>
+        <li><a href="#" class="top-menu2">이벤트</a></li>
+        <li><a href="login.html" class="top-menu3">로그인</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="box">
+      <h2 class="title">내 정보</h2>
+  </div>
+  <div class="main-wrap">
+    <section class="lnb">
+      <ul>
+        <li><a href="mymenu.html" class="on">내 정보</a></li>
+        <li><a href="coupon.html" class="">쿠폰함</a></li>
+        <li><a href="myreview.html" class="">작성 리뷰 관리</a></li>
+        <li><a href="reservations.html" class="">예약 내역</a></li>
+      </ul>
+    </section>
+    <section class="content">
+      <div class="cont-box profile-box">
+        <h3>프로필</h3>
+        <div class="profile-img">
+
+        </div>
+        <div class="profile-btngroup">
+          <label for="profile_change" class="profile-change-btn">찾아보기</label>
+          <input type="file" name="profile_change" id="profile_change" class="profile-change-btn-hide">
+          <button type="button" class="profile-complete-btn" id="profile-complete-btn">변경하기</button>
+          <button type="button" class="profile-reset-btn" id="profile-reset-btn">삭제</button>
+        </div>
+      </div>
+      <div class="cont-box">
+        <div class="name-box">
+          <h3>별명</h3>
+          <div class="info"><p id="name-now">맛있는 햄버거</p></div>
+          <button type="button" class="profile-change-btn">변경하기</button>
+        </div>
+        <form action="nickname-change.php" method="post" id="nickname-change">
+          <fieldset class="name-change-box">
+            <legend>별명 변경</legend>
+            <input type="text" name="nickname" id="nickname" title="별명 변경" placeholder="체크인시 필요한 정보에요!">
+          </fieldset>
+          <div class="change-btngroup">
+            <button type="submit" form="nickname-change" class="cont-submit-btn change-finish-btn">수정완료</button>
+            <button type="button" class="cont-cancel-btn change-cancel-btn">수정취소</button>
+          </div>
+        </form>
+      </div>
+      <div class="cont-box">
+        <div class="user-box">
+          <h3>예약자 정보</h3>
+          <div class="info"><p id="user-now">공원식</p></div>
+          <button type="button" class="profile-change-btn">변경하기</button>
+        </div>
+        <form action="user-change.php" method="post" id="user-change">
+          <fieldset class="user-change-box">
+            <legend>예약자 이름 변경</legend>
+            <input type="text" name="user" id="user" title="예약자 이름 변경" placeholder="체크인시 필요한 정보에요!">
+          </fieldset>
+          <div class="change-btngroup">
+            <button type="submit" form="user-change" class="cont-submit-btn change-finish-btn">수정완료</button>
+            <button type="button" class="cont-cancel-btn change-cancel-btn">수정취소</button>
+          </div>
+        </form>
+      </div>
+      <div class="cont-box">
+        <div class="tel-box">
+          <h3>전화번호</h3>
+          <div class="info"><p id="tel-now">010-****-9679</p></div>
+          <button type="button" class="profile-change-btn">변경하기</button>
+        </div>
+        <form action="tel-change.php" method="post" id="tel-change">
+          <fieldset class="tel-change-box">
+            <legend>전화번호 변경</legend>
+            <input type="tel" name="tel" id="tel" title="전화번호 변경" placeholder="체크인시 필요한 정보에요!">
+            <button type="submit" form="checknum" class="cont-submit-btn check-btn">인증번호 전송</button>
+          </fieldset>
+          <div class="change-btngroup">
+            <button type="submit" form="tel-change" class="cont-submit-btn change-finish-btn">수정완료</button>
+            <button type="button" class="cont-cancel-btn change-cancel-btn">수정취소</button>
+          </div>
+        </form>
+      </div>
+      <button type="button" class="signout-btn">회원탈퇴</button>
+    </section>
+  </div>
+</body>
+</html>

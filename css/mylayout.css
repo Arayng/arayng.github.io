@@ -1,0 +1,117 @@
+@font-face {font-family: 'yg-jalnan';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');font-weight: normal;font-style: normal;}
+@font-face {font-family: 'Pretendard-Regular';src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight: 400;font-style: normal;}
+/* reset css */
+*{margin: 0; padding: 0;}
+body, button{font-weight: normal; font-size: 16px; font-family: "Pretendard-Regular","맑은 고딕", 'Open Sans', sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size: inherit; font-weight: inherit;}
+ul,ol,dl,li{list-style: none;}
+a{text-decoration: none; color: #000;}
+address{font-style: normal;}
+.hide{overflow:hidden;position:absolute;width:0;height:0;line-height:0;text-indent:-9999px}
+.cf::after{content: ''; display: block; clear: both;}
+/* .main{margin: auto; min-width: 1200px; width: 1260px; } */
+
+/* 헤더영역 */
+header{
+  background-color: #5694f0;
+}
+.header-wrap{
+  width: 1200px;
+  height: 89px;
+  margin: auto;
+  position: relative;
+  border-top: 1px solid transparent;
+  overflow: hidden;
+}
+.logo {
+  width: 120px;
+  height: 30px;
+  margin: 35px;
+  float: left;
+}
+.logo a{
+  display: block;
+  width: 100%;
+  height: 22px;
+  background: url(../img/gc_logo_white.png) no-repeat 0 0 / contain;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.search-btn {
+  display: block;
+  width: 48px;
+  height: 48px;
+  background: url(../img/ico_srch_white.png) no-repeat 50% 50% / contain;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.top-menu{float: right;}
+.top-menu li{float: left; margin: 20px 15px; font-family: 'yg-jalnan';}
+.top-menu li a{
+  display: block;
+  width: 65px;
+  line-height: 48px;
+  color: #fff;
+  font-size: 18px;
+}
+
+/* 페이지 타이틀 */
+.box{
+  width: 100%;
+  height: 140px;
+  background-color: #5694f0;
+  position: relative;
+}
+.title{
+  color: #fff;
+  font-size: 48px;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+
+/* 메인 영역 */
+.main-wrap{
+  width: 1200px;
+  /* height: 1000px; 가이드 */
+  margin: 60px auto 0;
+  display: flex;
+}
+
+/* lnb */
+.lnb{
+  width: 300px;
+  height: 100%;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+.lnb ul li{
+  width: 100%;
+}
+.lnb ul li a{
+  display: block;
+  height: 50px;
+  font-size: 22px;
+  line-height: 50px;
+  box-sizing: border-box;
+}
+
+.on{
+  margin-left: 60px;
+  padding-left: 20px;
+  color: #f7323f;
+  background-color: #eee;
+}
+
+/* content */
+.content{
+  width: 900px;
+  background-color: #eee;
+  padding: 15px 30px 30px;
+  font-size: 22px;
+  box-sizing: border-box;
+  position: relative;
+}
+h3{ font-size: 22px; width: 110px;}
