@@ -48,6 +48,8 @@ fieldset{
   border: 1px solid #ddd;
   border-radius: 10px;
   margin: 30px 10px 0;
+  font-size: 22px;
+  text-indent: 13%;
 }
 .id{
   background: url(../img/id_btn.png) no-repeat 2% 50% / 40px 30px;
