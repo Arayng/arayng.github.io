@@ -75,7 +75,7 @@ address {
   background: #eee url(../img/scroll-lb.png) no-repeat 50% 50% / 60%;
   text-indent: -9999px;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.7;
   transition: all 0.4s;
 }
 
@@ -86,7 +86,7 @@ address {
   background: #eee url(../img/scroll-rb.png) no-repeat 50% 50% / 60%;
   text-indent: -9999px;
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.7;
   transition: all 0.4s;
 }
 
