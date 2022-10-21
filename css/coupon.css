@@ -1,0 +1,19 @@
+@font-face {font-family: 'yg-jalnan';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');font-weight: normal;font-style: normal;}
+@font-face {font-family: 'Pretendard-Regular';src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight: 400;font-style: normal;}
+
+.content{ min-height: 800px;}
+.content h3{
+  font-size: 24px;
+}
+#c_count{color: #f7323f; padding: 0 3px 0 20px;}
+
+.line{
+  margin: 10px 0 20px;
+}
+
+/* 쿠폰 레이아웃 */
+.c-box{
+  width: 650px;
+  height: 255px;
+  margin: 40px auto;
+}

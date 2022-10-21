@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0127)http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html# -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>여기어때 - 회원가입</title>
+  <link rel="stylesheet" href="./여기어때 - 회원가입_files/join.css">
+  <script type="text/javascript" src="./여기어때 - 회원가입_files/jquery-3.6.1.min.js.다운로드"></script>
+  <script type="text/javascript" src="./여기어때 - 회원가입_files/join.js.다운로드"></script>
+</head>
+<body>
+  <header>
+    <div class="header_wrap">
+      <h1 class="logo"><a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/index.html">여기어때</a></h1>
+      
+      <h2 class="hide">상단 메뉴</h2>
+      <ul class="top_menu">
+        <li><a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#" class="search_btn">검색</a></li>
+        <li><a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#" class="top_menu1">내주변</a></li>
+        <li><a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/event.html" class="top-menu2">이벤트</a></li>
+        <li><a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/login.html" class="top_menu3">로그인</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="nav_box">
+      <h2>회원가입</h2>
+      <ul class="list" id="list">
+        <li class="li_agree on">이용 약관 동의</li>
+        <li class="li_cer">본인 인증</li>
+        <li class="li_user">정보 입력</li>
+      </ul>
+    </div>
+
+    <form action="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join_com.html" method="get" class="join_form" name="join" onsubmit="return user_join()">
+
+          <!-- 약관 동의 -->
+          <section class="join_box onboard" id="agree_box">
+          <h3>이용 약관 및 동의</h3>
+          <div class="outbox">
+            <input type="checkbox" name="all_check" id="all_check">
+            <label for="all_check" class="all_check">전체 동의</label>
+          </div>
+            <fieldset id="est_group">
+                <legend>필수 동의</legend>
+                <div class="inbox">
+                  <input type="checkbox" name="tos_check" id="tos_check" class="est_chk">
+                  <label for="tos_check"><span class="est">(필수)</span> <a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#">이용약관 동의</a></label>
+                </div>
+                <div class="inbox">
+                  <input type="checkbox" name="age_check" id="age_check" class="est_chk">
+                  <label for="age_check"><span class="est">(필수)</span> <a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#">만 14세이상 이상 확인</a></label>
+                </div>   
+                <div class="inbox">
+                  <input type="checkbox" name="privacy_check" id="privacy_check" class="est_chk">
+                  <label for="privacy_check"><span class="est">(필수)</span> <a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#">개인정보 수집 및 이용 동의</a></label>
+                </div>
+            </fieldset>
+            <fieldset id="opt_group">
+                <legend>선택 동의</legend>
+                <div class="inbox">
+                  <input type="checkbox" name="optprviacy_check" id="optprviacy_check">
+                  <label for="optprviacy_check"><span class="opt">(선택)</span> <a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#">개인정보 수집 및 이용 동의</a></label>
+                </div>
+                <div class="inbox">
+                  <input type="checkbox" name="marketing_check" id="marketing_check">
+                  <label for="marketing_check"><span class="opt">(선택)</span> <a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#">마케팅 알림 수신 동의</a></label>
+                </div>
+                <div class="inbox">
+                  <input type="checkbox" name="location_check" id="location_check">
+                  <label for="location_check"><span class="opt">(선택)</span> <a href="http://127.0.0.1:5500/%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80%20%EC%95%84%EC%9D%B4%EC%BD%98/%EC%BD%94%EB%94%A9/join.html#">위치기반 서비스 이용약관 동의</a></label>
+                </div>
+            </fieldset>
+          <button type="button" class="next" id="tos_next">다 음</button>
+        </section>
+
+        <!-- 본인 인증 -->
+        <section class="join_box onboard" id="cer_box">
+          <h3>본인 인증</h3>
+          <fieldset>
+            <legend>인증번호 전송</legend>
+            <p>원활한 서비스 이용을 위해 본인인증을 진행해주세요.</p>
+            <div class="cer_inbox">
+              <label for="phone">핸드폰 번호 입력</label>
+              <span class="guide hide">핸드폰 번호 ' - ' 제외</span><br>
+              <input type="tel" name="phone" id="phone" placeholder="핸드폰 번호 &#39; - &#39; 제외">
+                  <button type="button" class="send" id="tel_chk_btn">전송</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>인증번호 입력</legend>
+            <div class="cer_inbox">
+              <label for="authnum">인증번호</label><br>
+              <input type="number" name="authnum" id="authnum" placeholder="인증번호">
+              <button type="button" class="con" id="auth_chk_btn">확인</button>
+              <span class="err_txt" id="auth_err"></span>
+            </div>
+          </fieldset>
+          <button type="button" class="next" id="cer_next">다 음</button>
+        </section>
+
+        <!-- 정보 입력 -->
+        <section class="join_box onboard" id="user_box">
+          <h3>정보 입력</h3>
+          <fieldset>
+            <legend>정보 입력</legend>
+            <div class="info_inbox">
+              <label for="user_id">이메일 아이디</label>
+              <input type="text" name="user_id" id="user_id" placeholder="이메일을 입력해주세요">
+              <p class="err_txt"></p>
+            </div>
+            <div class="info_inbox">
+              <label for="user_pw">비밀번호</label>
+              <p class="pw_guide hide">8 ~ 12자리의 영문, 숫자, 특수문자 사용 가능</p>
+              <input type="text" name="user_pw" id="user_pw" placeholder="비밀번호를 입력해주세요">
+              <p class="err_txt">영문, 숫자, 특수문자 포함 8~12자만 입력 할 수 있습니다.</p>
+            </div>
+            <div class="info_inbox">
+              <label for="user_pw_check">비밀번호 확인</label>
+              <input type="text" name="user_pw_check" id="user_pw_check" placeholder="비밀번호를 한번 더 입력해주세요">
+              <p class="err_txt"></p>
+            </div>
+            <div class="info_inbox">
+              <label for="user_name">별명</label>
+              <input type="text" name="user_name" id="user_name" placeholder="별명을 입력해주세요">
+              <p class="err_txt"></p>
+            </div>
+          </fieldset>
+          <button type="submit" class="next" id="join_end">회원가입 완료</button>
+        </section>
+
+      </form>
+  </div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

@@ -1,6 +1,8 @@
 .wrap{
   width: 800px;
   margin: 0 auto;
+  position: relative;
+  top: 70px;
 }
 
 .tap-menu ul{
@@ -20,7 +22,7 @@
   width: 120px;
   line-height: 47px;
 }
-.on{
+a.on{
   background-color: #eeeeee90;
   color: #f7323f;
   font-weight: bold;

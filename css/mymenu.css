@@ -124,6 +124,8 @@
 .name-box,
 .user-box,
 .tel-box{display: flex;}
+.content h3{ width: 75px; line-height: 30px;}
+.content p{line-height: 30px;}
 legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
 
 /* 닉네임 변경 영역 */
@@ -208,3 +210,7 @@ legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
   background-color: #f7323f;
   border-radius: 7px;
 }
+
+/* 폼 숨김 */
+form{ display: none;}
+form.change{ display: block;}

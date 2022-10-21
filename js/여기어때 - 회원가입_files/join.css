@@ -69,37 +69,22 @@ address {
 /* .main{margin: auto; min-width: 1200px; width: 1260px; } */
 
 /* 헤더영역 */
-.void{
-  width: 100%;
-  height: 70px;
-  position: relative;
-}
 header {
   background-color: #5694f0;
-  width: 100%;
-  height: 70px;
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  transition: background 0.5s;
 }
-header.on{
-  background-color: #8ad2e6;
-}
-
 
 .header_wrap {
   width: 1200px;
+  height: 89px;
   margin: auto;
   position: relative;
-  border-top: 1px solid transparent;
-  z-index: 2;
+  border-top: 1px solid transparent
 }
 
 .logo {
   width: 120px;
   height: 30px;
-  margin: 25px 35px;
+  margin: 35px;
   float: left;
 }
 
@@ -110,9 +95,7 @@ header.on{
   background: url(../img/gc_logo_white.png) no-repeat 0 0 / contain;
   text-indent: -9999px;
   overflow: hidden;
-  transition: background 0.4s;
 }
-
 
 .search_btn {
   display: block;
@@ -120,7 +103,6 @@ header.on{
   height: 48px;
   background: url(../img/ico_srch_white.png) no-repeat 50% 50% / contain;
   text-indent: -9999px;
-  transition: background 0.4s;
   overflow: hidden;
 }
 
@@ -130,28 +112,23 @@ header.on{
 
 .top_menu li {
   float: left;
-  margin: 10px 15px;
+  margin: 20px 15px;
   font-family: 'yg-jalnan';
 }
 
 .top_menu li a {
   display: block;
   width: 65px;
-  line-height: 50px;
+  line-height: 48px;
   color: #fff;
   font-size: 18px;
-  opacity: 0.6;
-  transition: all 0.4s;
-}
-.top_menu li a:hover{
-  opacity: 1;
 }
 
 /* 진행사항 */
 
 .wrap {
   width: 600px;
-  margin: 120px auto;
+  margin: 70px auto;
 }
 
 h2 {
@@ -181,9 +158,6 @@ h2 {
   background: url(../img/progress_bar.png) no-repeat bottom center;
 }
 
-.join_box {
-  display: none;
-}
 .onboard {
   display: block;
   width: 400px;
@@ -193,6 +167,9 @@ h2 {
   position: relative;
 }
 
+.join_box {
+  display: none;
+}
 
 h3 {
   text-indent: -999px;
@@ -235,11 +212,7 @@ input[type=checkbox]{
   position: relative;
   top: 4px;
 }
-input:read-only{
-  outline: none;
-  color: #666;
-  background-color: #eee;
-}
+
 .err_txt{
   font-size: 14px;
   display: inline-block;
@@ -258,9 +231,6 @@ input:read-only{
   border: none;
   cursor: pointer;
   opacity: 0.5;
-}
-.next.com{
-  opacity: 1;
 }
 
 input::placeholder {
@@ -356,12 +326,6 @@ input::placeholder {
 }
 
 .pw_guide {
-  color: #999;
-  font-size: 14px;
-  position: absolute;
-  bottom: 0;
-}
-.name_guide {
   color: #999;
   font-size: 14px;
   position: absolute;

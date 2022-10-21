@@ -1,0 +1,415 @@
+
+body{
+  overflow-y: scroll;
+}
+
+/* 검색 툴 배경 */
+.search {
+  width: 100%;
+  height: 170px;
+  background-color: #8ad2e6;
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translate(-50%);
+  display:none;
+  z-index:998;
+  transition: background 0.5s;
+}
+fieldset {
+  border: none;
+  width: 825px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+legend {
+  text-indent: -9999px;
+  width: 0;
+  height: 0;
+}
+
+
+/* 검색툴 위치 */
+.search-wrap {
+  width: 870px;
+  margin: 25px auto 0;
+  position: relative;
+}
+
+/* 검색툴 좌측 : 검색봐 / 선택창 있는곳 */
+.s-items {
+  width: 705px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #cff9ff;
+  box-sizing: border-box;
+  transition: background 0.5s;
+}
+
+.s-items p {
+  font-size: 18px;
+}
+
+#search-bar {
+  width: 685px;
+  height: 35px;
+  border: none;
+  border-radius: 35px;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.select-box {
+  width: 685px;
+  display: flex;
+  margin: 10px 0 0;
+}
+
+.lbox {
+  width: 225px;
+  height: 65px;
+  box-sizing: border-box;
+  border-right: 1px solid #999;
+  padding: 0 10px;
+}
+
+
+
+.dbox {
+  width: 240px;
+  height: 65px;
+  box-sizing: border-box;
+  border-right: 1px solid #999;
+  padding: 0 10px;
+}
+
+.pbox {
+  width: 240px;
+  height: 65px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  position: relative;
+}
+
+.search-btn {
+  width: 110px;
+  height: 130px;
+  border: none;
+  border-radius: 20px;
+  background-color: #cff9ff7c;
+  font-size: 22px;
+  font-weight: bold;
+  color: #5694f0;
+  cursor: pointer;
+  transition: background 0.4s, color 0.4s, box-shadow 0.4s;
+}
+.search-btn:hover{
+  background-color: #cff9ff;
+  box-shadow: 2px 2px 4px #999;
+}
+
+/* 입력(선택)창 */
+/* 지역 */
+#search-local {
+  width: 205px;
+  height: 30px;
+  border: none;
+  border-radius: 30px;
+  background: #fff url(../img/ico_srch.png) no-repeat 95% 50%/ 15%;
+  box-sizing: border-box;
+  margin: 10px 0 0;
+  padding: 10px 40px 10px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* 날짜 */
+#date_1,
+#date_2{
+  width: 102px;
+  height: 30px;
+  margin: 10px 0 0;
+  border: none;
+  float: left; 
+  text-align: center;
+}
+#date_1{
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+#date_2{
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  cursor: pointer;
+}
+.line{
+  width: 2px;
+  height: 30px;
+  margin: 10px 0 0 0;
+  float: left;
+  background-color: #999;
+  border-radius: 3px;
+}
+
+
+/* 여행지 선택 누르면 나오는 창 */
+
+.search-local-bg {
+  width: 100%;
+  height: 370px;
+  position: absolute;
+  left: 0;
+  top: 160px;
+  background-color: #fff;
+  box-shadow: 0px 3px 3px #bbb;
+  display: none;
+}
+.search-local-bg.on{display:block}
+.search-local {
+  width: 1200px;
+  height: 370px;
+  padding: 10px;
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%);
+}
+
+.search-local h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-local a {
+  font-size: 18px;
+}
+
+.depth1 {
+  width: 170px;
+  height: 350px;
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  padding-top: 55px;
+  box-sizing: border-box;
+  border-right: 2px solid #999;
+}
+
+.depth1>li {
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.depth1>li a {
+  display: block;
+  width: 100%;
+}
+
+.depth2 {
+  display: flex;
+  width: 270px;
+  height: 350px;
+  position: absolute;
+  left: 220px;
+  top: 0;
+  padding-top: 55px;
+  box-sizing: border-box;
+  border-right: 2px solid #999;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  display: none;
+}
+
+.depth2>li {
+  margin: 0 30px 25px 0;
+}
+
+.depth2.on {
+  display: flex;
+}
+
+.depth3 {
+  display: flex;
+  width: 610px;
+  position: absolute;
+  left: 310px;
+  top: 0;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  display: none;
+}
+
+.depth3.on {
+  display: flex;
+}
+
+.depth3 > dd{
+  width: 180px;
+  margin: 0 20px 20px 0;
+}
+
+.depth3 > dd a {
+  display: inline;
+  font-size: 16px;
+}
+
+.depth3 .all{
+  width: 220px;
+  box-sizing: border-box;
+  font-size: 18px;
+  margin: 10px 20px 20px 0;
+}
+.depth3 .hot {
+  width: 180px;
+  box-sizing: border-box;
+  font-size: 18px;
+  margin: 10px 20px 20px 0;
+}
+
+.depth3 .hot {
+  display: block;
+  background: url(../img/search_hot.png) no-repeat 75% 0;
+}
+
+.depth3 .hot.lt {
+  display: block;
+  background: url(../img/search_hot.png) no-repeat 100% 0;
+}
+.depth3 .last{
+  width: 300px;
+}
+
+/* animaition */
+.search-local a:hover {
+  font-weight: bold;
+}
+.search-local a.on {
+  font-weight: bold;
+  color: #f7323f;
+}
+
+/* 닫기버튼 */
+
+.close a{
+  display: block;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -20px;
+  right: 10px;
+}
+
+/* 옵션창 열렸을때 배경 */
+
+.option_bg{
+  background-color: rgba(0,0,0,0.37);
+  position: absolute;
+  top:70px;
+  left:0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  display: none;
+}
+
+/* 인원 선택 */
+
+.pbox button,
+.pbox input,
+.pbox label{
+  position: absolute;
+}
+.pbox label{
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Pretendard-Regular";
+  line-height: 32px;
+}
+.pbox button{
+  width: 32px;
+  height: 32px;
+  text-indent: -100px;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+}
+.pbox input{
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  color:#f7323f;
+  font-family: "Pretendard-Regular";
+  font-size: 20px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.btn_minus{
+  background: url(../img/minus_btn.png) no-repeat 50% 50% / 60% 70%;
+}
+.btn_plus{
+  background: url(../img/plus_btn.png) no-repeat 50% 50% / 70% 70%;
+}
+#adult_label{
+  top: 0;
+  left: 70px;
+}
+#adult_minus{
+  top: 0;
+  right: 90px;
+}
+#adult{
+  top: 0;
+  right: 51px;
+}
+#adult_plus{
+  top: 0;
+  right: 10px;
+}
+
+#kids_label{
+  bottom: 0;
+  left: 70px;
+}
+#kids_minus{
+  bottom: 0;
+  right: 90px;
+}
+#kids{
+  bottom: 0;
+  right: 51px;
+}
+#kids_plus{
+  bottom: 0;
+  right: 10px;
+}
+
+
+/* 스크롤 되었을때 변경 사항 */
+.search.scroll{
+  background-color: #fff;
+}
+.s-items.scroll{
+  background: #5690f07c;
+}
+.search-btn.scroll{
+  background-color: #5690f07c;
+  color:#fff
+}
+.search-btn.scroll:hover{
+  background-color: #5694f0;
+}
