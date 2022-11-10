@@ -34,7 +34,7 @@
       <fieldset style="display:block">
         <legend>이벤트 등록</legend>
         <input type="hidden" name="action_chk" value="modify">
-        <input type="hidden" name="event_idx" value="<?php echo $idx;?>">
+        <input type="hidden" name="event_idx" id="event_idx" value="<?php echo $idx;?>">
         <div class="regi_box">
           <label for="e_title">이벤트 이름</label>
           <input type="text" name="e_title" id="e_title" value="<?php echo $arr["title"];?>"required>
@@ -71,6 +71,7 @@
         </div>
       </fieldset>
       <div class="b_group">
+        <button type="button" class="delete_btn" id="delete">삭제하기</button>
         <button type="button" class="cancel_btn" onclick="history.back()">뒤로가기</button>
         <button type="submit" class="submit_btn">수정하기</button>
       </div>

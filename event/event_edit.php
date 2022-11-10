@@ -81,7 +81,7 @@
     break;
 
     case "modify" :
-
+      
       //데이터 가져오기
       $idx = $_POST["event_idx"];
       $title = $_POST["e_title"];
@@ -90,16 +90,68 @@
       $alt = $_POST["e_alt"];
       $winning = isset($_POST["e_winning"])? 'Y':'N';
       $sql = "update event set title='$title', start_date='$s_date', end_date='$e_date', alt='$alt', winning='$winning' where event_idx='$idx';";
-      // mysqli_query($dbcon,$sql);
-
-
-
+      mysqli_query($dbcon,$sql);
       $img_test = $_FILES['e_img'];
-      if($img_test["name"]){}else{echo ("null");};
+      // 이미지 업로드가 되었을때 실행
       // 이미지 업로드가 안되어 있을 경우(null이니까) 파일 업로드 건너뛰기
+      if(!$img_test["name"]){
+        echo "<script>
+            alert(\"이벤트 수정 완료\");
+            location.href=\"event.php\";
+          </script>";
+          exit;
+      }else{
+        $temp_file = $_FILES['e_img']['tmp_name'];
+      $fileTypeExt = explode("/", $_FILES['e_img']['type']);
+      $file_type = $fileTypeExt[0];
+      $file_ext =  $fileTypeExt[1];
+      $ext_chk = false;
+
+      switch($file_ext){
+        case 'jpg' :
+        case 'jpeg' :
+        case 'png' :
+          $ext_chk = true;
+          break;
+
+        default:
+          echo "<script>
+          alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다.\");
+          history.back();
+            </script>";
+          exit;
+          break;
+      }
+
+      if($file_type == 'image'){
+        if($ext_chk){
+          $res_file = "./banner_img/banner_".$idx;
+          move_uploaded_file($temp_file, $res_file);
+          echo "<script>
+            alert(\"이벤트 수정 완료\");
+            location.href=\"event.php\";
+          </script>";
+        }else{
+          echo "<script>
+            alert(\"이벤트 이미지 수정에 실패하였습니다. 파일을 확인해주세요\");
+            history.back();
+          </script>";
+          exit;
+        }
+      }else{
+        echo "<script>
+          alert(\"이벤트 이미지 수정에 실패하였습니다. 파일을 확인해주세요\");
+          history.back();
+        </script>";
+        exit;
+      }
+    }
     break;
+
+    case "delete" :
+      echo ("삭제 페이지");
   };
 
-
+mysqli_close($dbcon);
 
 ?>
