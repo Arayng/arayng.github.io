@@ -1,6 +1,8 @@
 <!-- 이벤트 페이지 -->
-<?php include "../inc/session.php";?>
-<?php include "../inc/dbcon.php";?>
+<?php
+ include "../inc/session.php";
+ include "../inc/dbcon.php";
+ ?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,7 +10,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여기어때 - 이벤트</title>
-
+  <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
+  <meta http-equiv="Expires" content="-1">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache">
   <link rel="stylesheet" href="../css/mylayout.css">
   <link rel="stylesheet" href="../css/event.css">
   <?php include "../inc/src_in.php";?>
@@ -35,7 +40,7 @@
       <ul>
         <?php
           $sql = "select * from event";
-          $paging_sql = "select * from event order by event_idx desc";
+          $paging_sql = "select * from event where end_cnt=0 order by event_idx desc";
           include "../inc/pager.php";
           while($arr = mysqli_fetch_array($paging_sql_result)){
             $s_explode = explode("-", $arr["start_date"]);

@@ -1,13 +1,15 @@
 <?php
   include "../inc/session.php";
-  include "../inc/dbcon.php";
   // 한페이지에서 여러가지 처리를 하기위한 조건 데이터 가져오기
-
+  header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
+  header("Cache-Control: no-store, no-cache, must-revalidate");
+  header("Cache-Control: post-check=0, pre-check=0", false);
+  header("Pragma: no-cache");
   $action = isset($_POST["action_chk"])? $_POST["action_chk"]:$_GET["action"];
-  echo $action."<br>";
   switch($action){
     //$action이 edit인 경우
     case "edit" :
+      include "../inc/dbcon.php";
 
       // 데이터 가져와서 DB에 저장하기 (우선)
       $title = $_POST["e_title"];
@@ -81,6 +83,7 @@
     break;
 
     case "modify" :
+      include "../inc/dbcon.php";
       
       //데이터 가져오기
       $idx = $_POST["event_idx"];
@@ -149,7 +152,25 @@
     break;
 
     case "delete" :
-      echo ("삭제 페이지");
+      include "../inc/dbcon.php";
+      $idx = $_GET["id"];
+      $sql = "delete from event where event_idx=$idx;";
+      mysqli_query($dbcon,$sql);
+      echo "<script>
+      alert(\"삭제되었습니다.\");
+      location.href=\"event.php\";
+    </script>";
+    exit;
+    break;
+
+    default:
+      echo "
+        <script type=\"text/javascript\">
+          alert(\"잘못된 접근입니다\");
+          history.back();
+        </script>
+      ";
+    break;
   };
 
 mysqli_close($dbcon);
