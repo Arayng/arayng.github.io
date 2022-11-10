@@ -12,12 +12,6 @@ var pw_test = new RegExp("(?=.*[0-9])(?=.*[~`!@#$%\^&*()-+=])(?=.*[A-Za-z]).{8,1
 var name_test = new RegExp("(?=.*[가-힣]).{3,6}$")
 
 window.onload = function(){
-  // //input 엔터키 안되게 ... 접근성 괜찮나..?
-  // document.join.addEventListener("keydown",function(evt){
-  //   console.log(evt)
-  //   if(evt.code === "Enter" || evt.code === "NumpadEnter") evt.preventDefault();
-  // })  
-
     // 약관동의 전체 선택
     var allCheck = document.getElementById("all_check");
     var accept = document.querySelectorAll(".inbox");
@@ -57,7 +51,16 @@ function user_join(){
   var err_txt = document.querySelectorAll("p.err_txt");
   // 아이디 부분
   var user_id = document.getElementById("user_id");
-
+  // 약관동의 체크안하면 submit 안되게
+  if(vali_chk == 0){
+    alert("약관에 동의 해주세요");
+    return false;
+  }
+  // 핸드폰 인증 안하면 submit 안되게
+  if(vali_auth == 0){
+    alert("핸드폰 인증을 해주세요");
+    return false;
+  }
   if(!user_id.value){
     err_txt[0].textContent = "이메일을 입력해주세요.";
     user_id.focus();
@@ -98,22 +101,35 @@ function user_join(){
     return false;
   }else{err_txt[2].textContent = "";};
   
+  // 예약자 정보
+  var reservation = document.getElementById("reservation");
+  if(!reservation.value){
+    err_txt[3].textContent = "예약자 정보를 입력해주세요";
+    reservation.focus();
+    return false;
+  }else{err_txt[3].textContent = "";};
+  if(!name_test.test(reservation.value)){
+    err_txt[3].textContent = "예약자 정보를 확인해주세요";
+    reservation.focus();
+    return false;
+  }else{err_txt[3].textContent = "";};
+
   // 닉네임 부분
   var user_name = document.getElementById("user_name");
   // var name_chk = new RegExp("^[가-힣|a-z|A-Z|0-9|]+${3,6}");
   if(!user_name.value){
     document.querySelector(".name_guide").classList.add("hide");
-    err_txt[3].textContent = "별명을 입력해주세요";
+    err_txt[4].textContent = "별명을 입력해주세요";
     user_name.focus();
     return false;
-  }else{err_txt[3].textContent = "";};
+  }else{err_txt[4].textContent = "";};
   if(!name_test.test(user_name.value)){
     document.querySelector(".name_guide").classList.add("hide");
-    err_txt[3].textContent = "별명은 3 ~ 6자리의 한글만 가능";
+    err_txt[4].textContent = "별명은 3 ~ 6자리의 한글만 가능";
     user_name.focus();
     return false;
-  }else{err_txt[3].textContent = "";};
-
+  }else{err_txt[4].textContent = "";};
+ 
 };
 
 // 제이쿼리
@@ -197,7 +213,6 @@ $(function(){
     };
   })
   // 리스트 클릭
-
   $("#list li").click(function(){
     $("section").removeClass("onboard")
     $("#list li").removeClass("on")
@@ -218,10 +233,5 @@ $(function(){
       },100)
     }
   })
-
-  // $("#join").submit(function(){
-  //   alert("*****")
-  //   return false;
-  // })
 });
 

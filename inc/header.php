@@ -1,40 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>여기어때 - 이벤트</title>
 
-  <link rel="stylesheet" href="css/mylayout.css">
-  <link rel="stylesheet" href="css/event.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/search_bar.css">
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript" src="js/search_bar.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup-setting.js"></script>
-</head>
-<body>
-  <!-- 헤더영역 -->
-  <header>
+    <header>
     <div class="header_wrap">
-      <h1 class="logo"><a href="index.html">여기어때</a></h1>
+      <h1 class="logo"><a href="./index.php">여기어때</a></h1>
       
       <h2 class="hide">상단 메뉴</h2>
       <ul class="top_menu">
         <li><a href="#" class="search_btn basic">검색</a></li>
         <li><a href="search.html" class="top_menu1 basic">내주변</a></li>
-        <li><a href="event.html" class="top_menu2 basic">이벤트</a></li>
-        <li><a href="login.html" class="top_menu3 basic">로그인</a></li>
+        <li><a href="./event/event.php" class="top_menu2 basic">이벤트</a></li>
+      <?php if(!$s_idx){ ?>
+        <li><a href="./login/login.php" class="top_menu3 basic">로그인</a></li>
+      <?php }else{ ?>
+        <li><a href="./members/mymenu.php" class="top_menu4 basic">내정보</a></li>
+        <li><a href="./login/logout.php" class="top_menu3 logout">로그아웃</a></li>
+      <?php } ?>
       </ul>  
-    </div>
+    </div>    
     <div class="search">
       <div class="search-wrap">
         <div class="search_icon"></div>
@@ -55,7 +36,7 @@
                   <div class="line"></div>
                   <input type="hidden" name="date2_value" id="date2_value" readonly>
                   <input type="text" name="date_2" id="date_2" placeholder="체크아웃" readonly>
-                  <input type="hidden" name="nigth_day" id="day" readonly>
+                  <input type="hidden" name="day" id="day" readonly>
                 </div>
                 <div class="pbox">
                   <p>인원</p>
@@ -763,50 +744,4 @@
     </div>
     <div class="option_bg"></div>
   </header>
-  <!-- 컨텐츠 영역 -->
-  <div class="box">
-      <h2 class="p_title">이벤트</h2>
-  </div>
-  <div class="wrap">
-    <section class="tap-menu">
-      <ul>
-        <li><a href="#" class="on">진행중인 이벤트</a></li>
-        <li><a href="#">종료된 이벤트</a></li>
-        <li><a href="#">당첨자 발표</a></li>
-      </ul>
-    </section>
-    <section class="event-wrap">
-      <ul>
-        <li>
-          <h3 class="event-title">현대카드 M포인트 제휴</h3>
-          <p class="event-period">기간 : 2022. 09. 28 ~ 별도 안내시 까지</p>
-          <a href="#" class="event-img">
-            <img src="img/banner_1.jpg" alt="현대카드 M포인트 제휴 M포인트 최대 5,000p 사용">
-          </a>
-        </li>
-        <li>
-          <h3 class="event-title">무료취소 숙소 & 바이러스 케어룸</h3>
-          <p class="event-period">기간 : 2022. 09. 28 ~ 별도 안내시 까지</p>
-          <a href="#" class="event-img">
-            <img src="img/banner_2.jpg" alt="안심하고 예약하세요 무료취소 숙소& 바이러스 케어룸">
-          </a>
-        </li>
-        <li>
-          <h3 class="event-title">강원도 여행 한방에 끝내기</h3>
-          <p class="event-period">기간 : 2022. 09. 28 ~ 별도 안내시 까지</p>
-          <a href="#" class="event-img">
-            <img src="img/banner_3.jpg" alt="인기 숙소 추천부터 맛집 할인까지! 강원도 여행 한방에 끝내기">
-          </a>
-        </li>
-        <li>
-          <h3 class="event-title">품질인증숙소 최대 5만원 할인</h3>
-          <p class="event-period">기간 : 2022. 09. 28 ~ 별도 안내시 까지</p>
-          <a href="#" class="event-img">
-            <img src="img/banner_4.png" alt="위생, 안전, 편리함 인증 완료! 품질인증숙소 최대 5만원 할인">
-          </a>
-        </li>
-      </ul>
-    </section>
-  </div>  
-</body>
-</html>
+

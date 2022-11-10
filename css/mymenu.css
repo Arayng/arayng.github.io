@@ -1,5 +1,6 @@
-@font-face {font-family: 'yg-jalnan';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');font-weight: normal;font-style: normal;}
-@font-face {font-family: 'Pretendard-Regular';src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight: 400;font-style: normal;}
+/* @font-face {font-family: 'yg-jalnan';src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');font-weight: normal;font-style: normal;}
+@font-face {font-family: 'Pretendard-Regular';src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight: 400;font-style: normal;} */
+
 
 .cont-box{ margin-bottom: 50px;}
 .info{
@@ -42,9 +43,19 @@
   height: 300px;
   border-radius: 50%;
   margin: 15px 10px;
+  overflow: hidden;
+}
+.default-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   background-color: #8ad2e6;
 }
-
+.profile-img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
 .profile-btngroup{
   width: 300px;
   margin-left: 10px;
@@ -131,7 +142,7 @@ legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
 /* 닉네임 변경 영역 */
 .name-change-box{
   width: 100%;
-  margin: 15px 0;
+  margin: 15px 0 0;
   border: none;
 }
 .name-change-box input{
@@ -150,7 +161,7 @@ legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
 /* 이름 변경 영역 */
 .user-change-box{
   width: 100%;
-  margin: 15px 0;
+  margin: 15px 0 0;
   border: none;
 }
 .user-change-box input{
@@ -168,9 +179,9 @@ legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
 }
 /* 전화번호 변경 영역 */
 .tel-change-box{
-  width: 100%;
+  width: 50%;
   height: 40px;
-  margin: 15px 0;
+  margin: 15px 0 0;
   border: none;
 }
 .tel-change-box input{
@@ -186,7 +197,24 @@ legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
   font-size: 16px;
   line-height: 16px;
 }
-
+input:read-only{
+  outline: none;
+  color: #666;
+  background-color: #eee;
+  border: none;
+}
+/* 인증번호 입력 박스 */
+.auth_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.auth-check{
+  background-color: #fff;
+  color: #5694F0;
+  transition: background 300ms;
+  transition: color 300ms;
+}
 /* 회원탈퇴 버튼 */
 
 .signout-btn{
@@ -212,5 +240,11 @@ legend{width: 0; height: 0; text-indent: -9999px; overflow: hidden;}
 }
 
 /* 폼 숨김 */
-form{ display: none;}
-form.change{ display: block;}
+.content form{ display: none;}
+.content form.change{ display: block;}
+/* 에러메세지 */
+.err-txt{
+  color: #f7323f;
+  font-size: 14px;
+  height: 30px;
+}

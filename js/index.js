@@ -349,6 +349,7 @@ $(function(){
       $(".floating-bar").fadeIn();
     }
   })
+  
 
   // 광고등록
   $(".ad_box").click(function(){
@@ -356,7 +357,26 @@ $(function(){
     return false;
   })
   
-  
+ //  플로팅 네비
+ var app_toggle = 0;
+ $(".f-app").click(function(){
+   console.log(app_toggle)
+  if(app_toggle == 0){
+    app_toggle = 1;
+    $(".app_download").stop().animate({width: 321.5, left: -321.5, opacity: 1},400)
+    return false;
+  }else{
+    app_toggle = 0;
+    $(".app_download").stop().animate({width: 70, left: 5, opacity: 0},400)
+    return false;
+  }
+})
+$(window).scroll(function(){
+  if(parseInt($(".app_download").css("left")) < 0){
+    app_toggle = 0;
+    $(".app_download").stop().animate({width: 70, left: 5, opacity: 0},400)
+  }
+})
 
 
     

@@ -262,6 +262,9 @@ input:read-only{
 .next.com{
   opacity: 1;
 }
+.next.end{
+  bottom: -110px;
+}
 
 input::placeholder {
   font-family: 'Pretendard';

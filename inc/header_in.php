@@ -1,42 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>여기어때</title>
 
-  <link rel="stylesheet" href="css/index.css">
-  <!-- <link rel="stylesheet" href="css/search_bar.css"> -->
-  <link rel="stylesheet" href="css/search_page.css">
-
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript" src="js/search_page.js"></script>
-</head>
-<body>
-  <!-- 헤더영역 -->
-  <header>
+    <header>
     <div class="header_wrap">
-      <h1 class="logo"><a href="index.html">여기어때</a></h1>
+      <h1 class="logo"><a href="../index.php">여기어때</a></h1>
       
       <h2 class="hide">상단 메뉴</h2>
       <ul class="top_menu">
-        <!-- <li><a href="#" class="search_btn basic">검색</a></li> -->
-        <li><a href="#" class="top_menu1 basic">내주변</a></li>
-        <li><a href="event.html" class="top_menu2 basic">이벤트</a></li>
-        <li><a href="login.html" class="top_menu3 basic">로그인</a></li>
+        <li><a href="#" class="search_btn basic">검색</a></li>
+        <li><a href="search.html" class="top_menu1 basic">내주변</a></li>
+        <li><a href="../event/event.php" class="top_menu2 basic">이벤트</a></li>
+      <?php if(!$s_idx){ ?>
+        <li><a href="../login/login.php" class="top_menu3 basic">로그인</a></li>
+      <?php }else{ ?>
+        <li><a href="../members/mymenu.php" class="top_menu4 basic">내정보</a></li>
+        <li><a href="../login/logout.php" class="top_menu3 logout">로그아웃</a></li>
+      <?php } ?>
       </ul>  
-    </div>
-
-  </header>
-  <!-- 컨텐츠 영역 -->
-  <div class="box">
+    </div>    
     <div class="search">
       <div class="search-wrap">
         <div class="search_icon"></div>
@@ -48,8 +27,6 @@
               <div class="select-box">
                 <div class="lbox">
                   <p>여행지</p>
-                  <input type="hidden" name="local_type" id="local_type" readonly>
-                  <input type="hidden" name="local_city" id="local_city" readonly>
                   <input type="text" name="search-local" id="search-local" placeholder="여행지 선택"  readonly>
                 </div>
                 <div class="dbox">
@@ -77,6 +54,9 @@
             <button type="submit" for="search" class="search-btn" id="search-btn">검 색</button>
           </fieldset>
         </form>
+        <div class="close">
+          <a href="#"><img src="../img/close_btn.png" alt="닫기"></a>
+        </div>
       </div>
       <div class="search-local-bg" id="search-local-bg">
         <div class="search-local">
@@ -763,50 +743,5 @@
       </div>
     </div>
     <div class="option_bg"></div>
-    <div class="layer"></div>
-      <h2 class="page_title">(검색한 지역 이름)</h2>
-  </div>
-  <div class="wrap">
-    <article class="contents" id="cont1">
-      <a href="#" class="cont_bg">
-          <h3 class="cont_name">명동 뉴 서울호텔</h3>
-          <p class="cont_review"><span class="score">9.1</span>추천해요 <span class="review_num">(351)</span></p>
-          <p class="cont_local"><span class="local_length">153m</span>중구 태평로1가</p>
-          <p class="cont_etc">무료주차, 넷플릭스</p>
-          <p class="cont_style time">대실 <span class="cont_price">35,000원</span></p>
-          <p class="cont_style sleep">숙박 <span class="cont_price">50,000원</span></p>
-      </a>
-    </article>
-    <article class="contents" id="cont2">
-      <a href="#" class="cont_bg">
-          <h3 class="cont_name">명동 밀리오레호텔</h3>
-          <p class="cont_review"><span class="score">9.0</span>추천해요 <span class="review_num">(2081)</span></p>
-          <p class="cont_local"><span class="local_length">353m</span>중구 충무로1가</p>
-          <p class="cont_etc">무료주차, 넷플릭스 고객 개인 계정 로그인 필수 ~ </p>
-          <p class="cont_style time">대실 <span class="cont_price">30,000원</span></p>
-          <p class="cont_style sleep">숙박 <span class="cont_price">55,000원</span></p>
-      </a>
-    </article>
-    <article class="contents" id="cont3">
-      <a href="#" class="cont_bg">
-          <h3 class="cont_name">종로 더 디자이너스</h3>
-          <p class="cont_review"><span class="score">9.2</span>추천해요 <span class="review_num">(2098)</span></p>
-          <p class="cont_local"><span class="local_length">486m</span>종로구 관수동</p>
-          <p class="cont_etc">무한대실 ~ 외 3개</p>
-          <p class="cont_style time">대실 <span class="cont_price">27,770원</span></p>
-          <p class="cont_style sleep">숙박 <span class="cont_price">77,780원</span></p>
-      </a>
-    </article>
-    <article class="contents" id="cont4">
-      <a href="#" class="cont_bg">
-          <h3 class="cont_name">종로 호텔 더 포스트</h3>
-          <p class="cont_review"><span class="score">9.5</span>추천해요 <span class="review_num">(3834)</span></p>
-          <p class="cont_local"><span class="local_length">486m</span>종로구 관수동</p>
-          <p class="cont_etc">VIP, 프리미엄 숙박 생일고객 와인제공 외 3개</p>
-          <p class="cont_style time">대실 <span class="cont_price">28,000원</span></p>
-          <p class="cont_style sleep">숙박 <span class="cont_price">55,000원</span></p>
-      </a>
-    </article>
-  </div>  
-</body>
-</html>
+  </header>
+

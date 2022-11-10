@@ -73,8 +73,7 @@ $(function(){
     $("#date2_value").val(picker.endDate.format('YYYY-MM-DD'));
     $("#date_1").val(picker.startDate.format('MM월 DD일'));
     $("#date_2").val(picker.endDate.format('MM월 DD일'));
-    $("#night").val(endDay - startDay);
-    
+    $("#day").val(endDay - startDay);
   });
 
   //인원 선택

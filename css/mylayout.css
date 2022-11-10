@@ -31,7 +31,9 @@ address{font-style: normal;}
 
 .main-wrap{
   width: 1200px;
-  margin: 60px auto 0;
+  margin: auto;
+  position: relative;  
+  top: 140px; /* 왜 70먹고들어가지? */
 }
 .main-wrap section{
   float: left;

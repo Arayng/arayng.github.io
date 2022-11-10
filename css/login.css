@@ -49,7 +49,8 @@ fieldset{
   border-radius: 10px;
   margin: 30px 10px 0;
   font-size: 22px;
-  text-indent: 13%;
+  box-sizing: border-box;
+  padding-left: 13%;
 }
 .id{
   background: url(../img/id_btn.png) no-repeat 2% 50% / 40px 30px;
@@ -57,8 +58,7 @@ fieldset{
 }
 .id::placeholder{
   font-size: 22px;
-  font-family: 'Pretendard';
-  text-indent: 13%;
+  font-family: 'Pretendard-Regular';
 }
 .pw{
   background: url(../img/pw_btn.png) no-repeat 2% 50% / 40px 30px;
@@ -66,8 +66,7 @@ fieldset{
 }
 .pw::placeholder{
   font-size: 22px;
-  font-family: 'Pretendard';
-  text-indent: 13%;
+  font-family: 'Pretendard-Regular';
 }
 
 .lg_btn{
@@ -160,4 +159,12 @@ fieldset{
 .copyright{
   text-align: center;
   color: #999;
+}
+
+/* 에러메세지 */
+.err-txt{
+  margin: 5px 0 0 10px;
+  color: red;
+  height: 20px;
+  text-align: center;
 }

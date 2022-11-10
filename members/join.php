@@ -5,22 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여기어때 - 회원가입</title>
-  <link rel="stylesheet" href="css/join.css">
+  <link rel="stylesheet" href="../css/join.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script type="text/javascript" src="js/join.js"></script>
+  <script type="text/javascript" src="../js/join.js"></script>
 </head>
 <body>
   <header>
     <div class="header_wrap">
-      <h1 class="logo"><a href="index.html">여기어때</a></h1>
-      
-      <h2 class="hide">상단 메뉴</h2>
-      <ul class="top_menu">
-        <!-- <li><a href="#" class="search_btn">검색</a></li> -->
-        <li><a href="search.html" class="top_menu1">내주변</a></li>
-        <li><a href="event.html" class="top-menu2">이벤트</a></li>
-        <li><a href="login.html" class="top_menu3">로그인</a></li>
-      </ul>
+      <h1 class="logo"><a href="../index.php">여기어때</a></h1>
     </div>
   </header>
 
@@ -34,7 +26,7 @@
       </ul>
     </div>
 
-    <form action="join_com.html" method="get" class="join_form" name="join" id="join" onsubmit="return user_join()">
+    <form action="insert.php" method="post" class="join_form" name="join" id="join" onsubmit="return user_join()">
 
           <!-- 약관 동의 -->
           <section class="join_box onboard" id="agree_box">
@@ -123,13 +115,18 @@
               <p class="err_txt"></p>
             </div>
             <div class="info_inbox">
+              <label for="reservation">예약자 정보</label>
+              <input type="text" name="reservation" id="reservation" placeholder="이름을 적어주세요">
+              <p class="err_txt"></p>
+            </div>
+            <div class="info_inbox">
               <label for="user_name">별명</label>
               <p class="name_guide">* 3 ~ 6자리의 한글만 가능</p>
               <input type="text" name="user_name" id="user_name" placeholder="별명을 입력해주세요">
               <p class="err_txt"></p>
             </div>
           </fieldset>
-          <button type="submit" class="next" id="join_end">회원가입 완료</button>
+          <button type="submit" class="next end" id="join_end">회원가입 완료</button>
         </section>
 
       </form>
