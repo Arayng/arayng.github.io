@@ -1,2 +1,2 @@
-# arayng.github.io/index.html
+# arayng.github.io/index.
 그린컴
