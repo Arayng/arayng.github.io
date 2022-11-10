@@ -19,15 +19,23 @@ $(function(){
       reader.readAsDataURL(file); // var file의 url을 가져옴
       reader.onload = function(e){
         $("#img_preview").attr("src", e.target.result);
-      }
-    }
-  })
+      };
+    };
+  });
+  // 이미지 초기화
   var reset = $("#img_preview").attr('src')
   $("#img_reset").click(function(){
     $("#e_img").val("");
     $("#img_preview").attr('src',reset);
   })
-
-
+  // 삭제하기
+  $("#delete").click(function(){
+    var chk = confirm("정말로 삭제하시겠습니까?");
+    if(chk){
+      var idx = $("#event_idx").val();
+      location.href=`event_edit.php?action=delete&id=${idx}`;
+    }
+  });
+  
 
 })

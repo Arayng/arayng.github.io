@@ -97,3 +97,7 @@ a.on{
   background: #5694f0;
 }
 
+/* 종료된 이벤트 */
+.ended {
+  opacity: 0.5 !important;
+}

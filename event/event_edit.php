@@ -18,7 +18,6 @@
       $alt = $_POST["e_alt"];
       $winning = isset($_POST["e_winning"])? 'Y':'N';
       $sql = "insert into event(title, start_date, end_date, alt, winning) values('$title', '$s_date', '$e_date', '$alt', '$winning');";
-      echo $sql;
       mysqli_query($dbcon,$sql);
       
       // 저장한 데이터 다시 불러오기(이미지 저장을 위해)

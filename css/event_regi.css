@@ -55,6 +55,16 @@
   cursor: pointer;
   transition: background 0.4s, color 0.4s;
 }
+.delete_btn{
+  border: 1px solid #ff7a83 ;
+  background: #ff7a83 !important;
+  color: #fff;
+  margin-right: 10px;
+}
+.delete_btn:hover{
+  background: #ff0011 !important;
+  color: #fff;
+}
 .cancel_btn{
   border: 1px solid #f7323f;
   color: #f7323f;
@@ -92,3 +102,4 @@
   background: #f7323f;
   color: #fff;
 }
+
