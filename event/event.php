@@ -23,7 +23,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Cache-Control" content="no-cache">
   <link rel="stylesheet" href="../css/mylayout.css">
-  <link rel="stylesheet" href="../css/event.css">
+  <link rel="stylesheet" href="css/event.css">
   <?php include "../inc/src_in.php";?>
 </head>
 <body>

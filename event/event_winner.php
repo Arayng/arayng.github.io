@@ -1,15 +1,6 @@
 <!-- 이벤트 페이지 -->
 <?php
   include "../inc/session.php";
-  include "../inc/dbcon.php";
-  $today = date("Y-m-d");
-  $date_chk = "select * from event where end_date < '$today';";
-  $date_chk_result = mysqli_query($dbcon,$date_chk);
-  while($return_chk = mysqli_fetch_array($date_chk_result)){
-    $end_chk = "update event set end_cnt=1 where event_idx={$return_chk["event_idx"]};";
-    mysqli_query($dbcon,$end_chk);
-  };
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -23,8 +14,9 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Cache-Control" content="no-cache">
   <link rel="stylesheet" href="../css/mylayout.css">
-  <link rel="stylesheet" href="../css/event.css">
+  <link rel="stylesheet" href="css/event.css">
   <?php include "../inc/src_in.php";?>
+  <script src="js/event_winner.js"></script>
 </head>
 <body>
   <!-- 헤더영역 -->
@@ -41,34 +33,39 @@
         <li><a href="event_winner.php" class="on">당첨자 발표</a></li> 
       </ul>
       <?php if($s_id == 'admin@admin'){?>
-      <a href="e_regi.php" class="e_regi">이벤트 등록하기</a>
+        <a href="e_write.php" class="e_regi">게시글 등록하기</a>
       <?php };?>
-    </section>
-    <section class="event-wrap">
-      <ul>
-        <?php
-          $sql = "select * from event where end_cnt=1;";
-          $paging_sql = "select * from event where end_cnt=1 order by event_idx desc";
-          include "../inc/pager.php";
-          while($arr = mysqli_fetch_array($paging_sql_result)){
-            $s_explode = explode("-", $arr["start_date"]);
-            $s_date = $s_explode[0].'. '.$s_explode[1].'. '.$s_explode[2].'. ';
-            $e_explode = explode("-", $arr["end_date"]);
-            $e_explode[0] >= 9999 ? $e_date = '별도 안내시 까지': $e_date = $e_explode[0].'. '.$e_explode[1].'. '.$e_explode[2].'. ';
-        ?>
-        <li>
-          <h3 class="event-title ended"><?php echo $arr["title"]?></h3>
-          <p class="event-period ended">기간 : <?php echo $s_date;?> ~ <?php echo $e_date;?></p>
-          <?php if($s_id == 'admin@admin'){?>
-            <a href="e_modify.php?id=<?php echo $arr["event_idx"];?>" class="e_modify">수정하기</a>
-          <?php };?>
-          <a href="#" class="event-img ended">
-            <img src="banner_img/banner_<?php echo $arr["event_idx"];?>" alt="<?php echo $arr["alt"];?>" class="ended">
+      </section>
+      <section class="board-wrap">
+        <ul>
+          <?php
+        $sql = "select * from e_notice where del=0;";
+        $paging_sql = "select * from e_notice where del=0 order by ew_idx desc";
+        include "../inc/pager.php";
+        while($arr = mysqli_fetch_array($paging_sql_result)){
+          ?>
+        <li class="board">
+          <a href="#" class="list_que">
+            <h3 class="board-title"><?php echo $arr["title"];?></h3>
+            <p class="board-date"><?php echo $arr["date"];?></p>
+            <img src="../img/drop.jpg" class="drop_btn" alt="열기">
           </a>
+          <div class="board_content">
+            <?php echo $arr["content"];?>
+          </div>
+          <?php if($s_id == 'admin@admin'){?>
+            <div class="b_group">
+              <input type="hidden" name="idx" id="ew_idx" value="<?php echo $arr["ew_idx"];?>">
+              <a href="#" class="mgr_btn del_btn">삭제</a>
+              <a href="en_modify.php?id=<?php echo $arr["ew_idx"];?>" class="mgr_btn mod_btn">수정</a>
+            </div>
+          <?php };?>
         </li>
-        <?php };?>        
+        <?php }?>
       </ul>
-      <?php include "../inc/pager_list.php";?>
+      <div class="pager_list">
+        <?php include "../inc/pager_list.php";?>
+      </div>
     </section>
   </div>  
 </body>

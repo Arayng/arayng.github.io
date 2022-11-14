@@ -9,9 +9,9 @@
     <title>여기어때 - 이벤트 수정</title>
     
     <link rel="stylesheet" href="../css/mylayout.css">
-    <link rel="stylesheet" href="../css/event_regi.css">
+    <link rel="stylesheet" href="css/event_regi.css">
     <?php include "../inc/src_in.php";?>
-    <script src="../js/event_regi.js"></script>
+    <script src="js/event_regi.js"></script>
   </head>
   <body>
     <!-- 헤더영역 -->

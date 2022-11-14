@@ -1,13 +1,13 @@
 <?php
   include "../inc/session.php";
-  // 한페이지에서 여러가지 처리를 하기위한 조건 데이터 가져오기
   header("Last-Modified: ".gmdate("D, d M Y H:i:s")." GMT");
   header("Cache-Control: no-store, no-cache, must-revalidate");
   header("Cache-Control: post-check=0, pre-check=0", false);
   header("Pragma: no-cache");
+  // 한페이지에서 여러가지 처리를 하기위한 조건 데이터 가져오기
   $action = isset($_POST["action_chk"])? $_POST["action_chk"]:$_GET["action"];
   switch($action){
-    //$action이 edit인 경우
+    // 이벤트 등록
     case "edit" :
       include "../inc/dbcon.php";
 
@@ -80,7 +80,7 @@
         exit;
       }
     break;
-
+    // 이벤트 수정
     case "modify" :
       include "../inc/dbcon.php";
       
@@ -97,42 +97,49 @@
       // 이미지 업로드가 되었을때 실행
       // 이미지 업로드가 안되어 있을 경우(null이니까) 파일 업로드 건너뛰기
       if(!$img_test["name"]){
-        echo "<script>
-            alert(\"이벤트 수정 완료\");
-            location.href=\"event.php\";
-          </script>";
-          exit;
-      }else{
-        $temp_file = $_FILES['e_img']['tmp_name'];
-      $fileTypeExt = explode("/", $_FILES['e_img']['type']);
-      $file_type = $fileTypeExt[0];
-      $file_ext =  $fileTypeExt[1];
-      $ext_chk = false;
-
-      switch($file_ext){
-        case 'jpg' :
-        case 'jpeg' :
-        case 'png' :
-          $ext_chk = true;
-          break;
-
-        default:
           echo "<script>
-          alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다.\");
-          history.back();
+              alert(\"이벤트 수정 완료\");
+              location.href=\"event.php\";
             </script>";
-          exit;
-          break;
-      }
+            exit;
+        }else{
+          $temp_file = $_FILES['e_img']['tmp_name'];
+        $fileTypeExt = explode("/", $_FILES['e_img']['type']);
+        $file_type = $fileTypeExt[0];
+        $file_ext =  $fileTypeExt[1];
+        $ext_chk = false;
 
-      if($file_type == 'image'){
-        if($ext_chk){
-          $res_file = "./banner_img/banner_".$idx;
-          move_uploaded_file($temp_file, $res_file);
-          echo "<script>
-            alert(\"이벤트 수정 완료\");
-            location.href=\"event.php\";
-          </script>";
+        switch($file_ext){
+          case 'jpg' :
+          case 'jpeg' :
+          case 'png' :
+            $ext_chk = true;
+            break;
+
+          default:
+            echo "<script>
+            alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다.\");
+            history.back();
+              </script>";
+            exit;
+            break;
+        }
+
+        if($file_type == 'image'){
+          if($ext_chk){
+            $res_file = "./banner_img/banner_".$idx;
+            move_uploaded_file($temp_file, $res_file);
+            echo "<script>
+              alert(\"이벤트 수정 완료\");
+              location.href=\"event.php\";
+            </script>";
+          }else{
+            echo "<script>
+              alert(\"이벤트 이미지 수정에 실패하였습니다. 파일을 확인해주세요\");
+              history.back();
+            </script>";
+            exit;
+          }
         }else{
           echo "<script>
             alert(\"이벤트 이미지 수정에 실패하였습니다. 파일을 확인해주세요\");
@@ -140,26 +147,71 @@
           </script>";
           exit;
         }
-      }else{
-        echo "<script>
-          alert(\"이벤트 이미지 수정에 실패하였습니다. 파일을 확인해주세요\");
-          history.back();
-        </script>";
-        exit;
       }
-    }
     break;
-
+    // 이벤트 삭제
     case "delete" :
       include "../inc/dbcon.php";
       $idx = $_GET["id"];
       $sql = "delete from event where event_idx=$idx;";
       mysqli_query($dbcon,$sql);
       echo "<script>
-      alert(\"삭제되었습니다.\");
-      location.href=\"event.php\";
-    </script>";
-    exit;
+        alert(\"삭제되었습니다.\");
+        location.href=\"event.php\";
+      </script>
+      ";
+      exit;
+    break;
+    // 이벤트 공지 등록
+    case "write" :
+      include "../inc/dbcon.php";
+      $title = $_POST["title"];
+      $link = $_POST["link"];
+      $date = $_POST["w_date"];
+      $date = str_replace(". ","",$date);
+      $content = $_POST["content"];
+      $content = str_replace("'","''",$content);
+      $sql = "insert into e_notice(title, link, date, content) values ('$title', '$link', '$date', '$content');";
+      // echo $sql;
+      mysqli_query($dbcon,$sql);
+      echo "
+        <script type=\"text/javascript\">
+          location.href=\"http://localhost/event/event_winner.php\";
+        </script>
+      ";
+    break;
+    // 이벤트 공지 수정
+    case "w_modify" :
+      include "../inc/dbcon.php";
+      $idx = $_POST["idx"];
+      $title = $_POST["title"];
+      $link = $_POST["link"];
+      $date = $_POST["w_date"];
+      $date = str_replace(". ","",$date);
+      $content = $_POST["content"];
+      $content = str_replace("'","''",$content);
+      $sql = "update e_notice set title='$title', link='$link', date='$date', content='$content' where ew_idx='$idx';";
+      // echo $sql;
+      mysqli_query($dbcon,$sql);
+      echo "
+        <script type=\"text/javascript\">
+          location.href=\"http://localhost/event/event_winner.php\";
+        </script>
+      ";
+    break;
+    // 이벤트 공지 삭제
+    case "w_delete" :
+      include "../inc/dbcon.php";
+      $idx = $_GET["id"];
+      $sql = "update e_notice set del=1 where ew_idx='$idx';";
+      // echo $sql;
+      mysqli_query($dbcon,$sql);
+      echo "
+        <script type=\"text/javascript\">
+          alert(\"삭제되었습니다\");
+          location.href=\"http://localhost/event/event_winner.php\";
+        </script>
+      ";
     break;
 
     default:
