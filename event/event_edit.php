@@ -21,7 +21,7 @@
       mysqli_query($dbcon,$sql);
       
       // 저장한 데이터 다시 불러오기(이미지 저장을 위해)
-      $e_idx = mysqli_insert_id($dbcon);
+      $e_idx = mysqli_insert_id($dbcon); // 마지막에 저장된 데이터에서 pk값을 가져옴
       $sql = "select * from event where event_idx=$e_idx;";
       $pm = mysqli_query($dbcon,$sql);
       $arr = mysqli_fetch_array($pm);
@@ -33,7 +33,7 @@
           </script>";
         exit;
       }
-
+      // 배너 업로드
       $temp_file = $_FILES['e_img']['tmp_name'];
 
       $fileTypeExt = explode("/", $_FILES['e_img']['type']);
@@ -79,6 +79,8 @@
         </script>";
         exit;
       }
+      // 컨텐츠 파일 업로드
+
     break;
     // 이벤트 수정
     case "modify" :

@@ -35,8 +35,46 @@
 #e_img{padding: 5px 0;}
 #e_winning{ width: 20px; height: 20px; margin-right: 280px;}
 .regi_box.preview{ width: 760px;}
-.preview img{ width: 100%;}
-
+.preview img{ width: 100%; max-height: 315px;}
+/* 목록 수정 버튼 */
+.listBtn{
+  width: 190px;
+  margin: 20px 0 20px 30px;
+  position: absolute;
+  top: 18px;
+  right: 0;
+}
+.contList{
+  width: 500px;
+  height: 210px;
+  margin: 20px 0;
+  background: #f8f8f8;
+  position: relative;
+  overflow-y: scroll;
+}
+.contList p{
+  line-height: 35px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.sel{
+  display: inline-block;
+  background-color: lightblue;
+  border-radius: 5px;
+  box-shadow: inset 1px 1px 2px 1px rgba(255, 255, 255, 0.5);
+}
+.lBtn{
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+}
+.all{
+  width: 70px;
+}
+.rm_btn{
+  width: 25px;
+  height: 25px;
+}
 /* 버튼 영역 */
 .b_group{
   display: flex;

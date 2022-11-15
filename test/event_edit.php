@@ -4,57 +4,63 @@
   header("Cache-Control: no-store, no-cache, must-revalidate");
   header("Cache-Control: post-check=0, pre-check=0", false);
   header("Pragma: no-cache");
-  // 한페이지에서 여러가지 처리를 하기위한 조건 데이터 가져오기
-  $title = $_POST["e_title"];
-  $dri = "viewPage/".$title;
-  echo $dri."<br>";
-  mkdir($dri,0777,true);
-  $file = $_FILES['e_img'];
-  $temp_file = $_FILES['e_img']['tmp_name'];
-  for($i=0; $i<count($file['type']); $i++){
-    $fileTypeExt = explode("/", $file['type'][$i]);
-    $file_type = $fileTypeExt[0];
-    $file_ext =  $fileTypeExt[1];
-    $ext_chk = false;
-    // 파일 확장자 체크
-    switch($file_ext){
-      case 'jpg' :
-      case 'jpeg' :
-      case 'png' :
-        $ext_chk = true;
-        break;
-
-      default:
-        echo "<script>
-                alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다.\");
-                history.back();
-          </script>";
-        exit;
-        break;
-    }
-    if($file_type == 'image'){
-      if($ext_chk){
-        $res_file = "viewPage/".$title."/".$i+1;
-        move_uploaded_file($temp_file[$i], $res_file);
-        echo "<script>
-          alert(\"이벤트 등록 완료\");
-          location.href=\"event.php\";
-        </script>";
-      }else{
-        echo "<script>
-          alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요\");
-          history.back();
-        </script>";
-        exit;
-      }
-    }else{
-      echo "<script>
-        alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요\");
-        history.back();
-      </script>";
-      exit;
-    }
+  for($f=0;$f<count($_POST['e_img']['name']);$f++){
+    var_dump($_POST['e_img']['name']);
   }
+  
+
+
+  // 한페이지에서 여러가지 처리를 하기위한 조건 데이터 가져오기
+  // $title = $_POST["e_title"];
+  // $dri = "viewPage/".$title;
+  // echo $dri."<br>";
+  // mkdir($dri,0777,true);
+  // $file = $_FILES['e_img'];
+  // $temp_file = $_FILES['e_img']['tmp_name'];
+  // for($i=0; $i<count($file['type']); $i++){
+  //   $fileTypeExt = explode("/", $file['type'][$i]);
+  //   $file_type = $fileTypeExt[0];
+  //   $file_ext =  $fileTypeExt[1];
+  //   $ext_chk = false;
+  //   // 파일 확장자 체크
+  //   switch($file_ext){
+  //     case 'jpg' :
+  //     case 'jpeg' :
+  //     case 'png' :
+  //       $ext_chk = true;
+  //       break;
+
+  //     default:
+  //       echo "<script>
+  //               alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다.\");
+  //               history.back();
+  //         </script>";
+  //       exit;
+  //       break;
+  //   }
+  //   if($file_type == 'image'){
+  //     if($ext_chk){
+  //       $res_file = "viewPage/".$title."/".$i+1;
+  //       move_uploaded_file($temp_file[$i], $res_file);
+  //       echo "<script>
+  //         alert(\"이벤트 등록 완료\");
+  //         location.href=\"event.php\";
+  //       </script>";
+  //     }else{
+  //       echo "<script>
+  //         alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요\");
+  //         history.back();
+  //       </script>";
+  //       exit;
+  //     }
+  //   }else{
+  //     echo "<script>
+  //       alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요\");
+  //       history.back();
+  //     </script>";
+  //     exit;
+  //   }
+  // }
       
 
       

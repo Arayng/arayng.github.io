@@ -21,10 +21,10 @@
       <h2 class="p_title">이벤트 등록</h2>
   </div>
   <div class="regi_wrap">
-    <form action="event_edit.php" method="post" enctype=multipart/form-data>
+    <form action="test.php" method="post" enctype=multipart/form-data>
       <fieldset style="display:block">
         <legend>이벤트 등록</legend>
-        <input type="hidden" name="action_chk" value="edit">
+        <!-- <input type="hidden" name="action_chk" value="edit">
         <div class="regi_box">
           <label for="e_title">이벤트 이름</label>
           <input type="text" name="e_title" id="e_title" required>
@@ -49,13 +49,24 @@
           <input type="checkbox" name="e_winning" id="e_winning">
         </div>
         <div class="regi_box">
-          <label for="e_img">이벤트 이미지 등록</label>
+          <label for="e_img">배너 이미지 등록</label>
           <input type="file" name="e_img" id="e_img" required>
           <p class="guide_txt">3MB이하 'jpg', 'jpeg', 'png' 파일만 등록 가능</p>
         </div>
         <div class="regi_box preview">
-          <p>이미지 미리보기</p>
+          <p>배너 미리보기</p>
           <img src="" alt="" id="img_preview">
+        </div> -->
+        <div class="regi_box">
+          <label for="c_img">컨텐츠 이미지 등록</label>
+          <input type="file" name="c_img" id="c_img" required multiple>
+          <p class="guide_txt">3MB이하 'jpg', 'jpeg', 'png' 파일만 등록 가능</p>
+          <div class="contList"></div>
+          <div class="listBtn">
+            <button type="button" class="lBtn all">전체 삭제</button>
+            <button type="button" class="lBtn up">위로</button>
+            <button type="button" class="lBtn down">아래로</button>
+          </div>
         </div>
       </fieldset>
       <div class="b_group">
@@ -63,6 +74,29 @@
         <button type="submit" class="submit_btn">등록하기</button>
       </div>
     </form>
-  </div>  
+  </div>
+  <footer>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </footer>
 </body>
 </html>

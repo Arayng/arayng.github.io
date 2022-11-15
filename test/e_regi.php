@@ -62,7 +62,7 @@
           </div>
         </div>
         <button type="button" class="idx_change">위로</button>
-        <button type="button" class="subm">보내기</button>
+        <button type="button" class="subm">현재 상태 저장하기</button>
         <div class="regi_box preview">
           <p>이미지 미리보기</p>
           <img src="" alt="" id="img_preview">
