@@ -21,10 +21,10 @@
       <h2 class="p_title">이벤트 등록</h2>
   </div>
   <div class="regi_wrap">
-    <form action="test.php" method="post" enctype=multipart/form-data>
+    <form action="event_edit.php" method="post" enctype=multipart/form-data>
       <fieldset style="display:block">
         <legend>이벤트 등록</legend>
-        <!-- <input type="hidden" name="action_chk" value="edit">
+        <input type="hidden" name="action_chk" value="edit">
         <div class="regi_box">
           <label for="e_title">이벤트 이름</label>
           <input type="text" name="e_title" id="e_title" required>
@@ -56,10 +56,10 @@
         <div class="regi_box preview">
           <p>배너 미리보기</p>
           <img src="" alt="" id="img_preview">
-        </div> -->
+        </div>
         <div class="regi_box">
           <label for="c_img">컨텐츠 이미지 등록</label>
-          <input type="file" name="c_img" id="c_img" required multiple>
+          <input type="file" name="c_img[]" id="c_img" required multiple>
           <p class="guide_txt">3MB이하 'jpg', 'jpeg', 'png' 파일만 등록 가능</p>
           <div class="contList"></div>
           <div class="listBtn">

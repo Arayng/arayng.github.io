@@ -17,7 +17,8 @@
       $e_date = $_POST["e_date"];
       $alt = $_POST["e_alt"];
       $winning = isset($_POST["e_winning"])? 'Y':'N';
-      $sql = "insert into event(title, start_date, end_date, alt, winning) values('$title', '$s_date', '$e_date', '$alt', '$winning');";
+      $img_cnt = count($_FILES['c_img']['tmp_name']);
+      $sql = "insert into event(title, start_date, end_date, alt, winning, img_cnt) values('$title', '$s_date', '$e_date', '$alt', '$winning', '$img_cnt');";
       mysqli_query($dbcon,$sql);
       
       // 저장한 데이터 다시 불러오기(이미지 저장을 위해)
@@ -33,6 +34,7 @@
           </script>";
         exit;
       }
+
       // 배너 업로드
       $temp_file = $_FILES['e_img']['tmp_name'];
 
@@ -50,7 +52,7 @@
 
         default:
           echo "<script>
-          alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다.\");
+          alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다. err 01\");
           history.back();
             </script>";
           exit;
@@ -61,26 +63,85 @@
         if($ext_chk){
           $res_file = "./banner_img/banner_".$arr["event_idx"];
           move_uploaded_file($temp_file, $res_file);
-          echo "<script>
-            alert(\"이벤트 등록 완료\");
-            location.href=\"event.php\";
-          </script>";
         }else{
           echo "<script>
-            alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요\");
+            alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요 err 02\");
             history.back();
           </script>";
           exit;
         }
       }else{
         echo "<script>
-          alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요\");
+          alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요 err 03\");
           history.back();
         </script>";
         exit;
       }
-      // 컨텐츠 파일 업로드
 
+      // 컨텐츠 파일 업로드
+      $extChk = []; //배열 사용을 위한 배열 선언
+
+      // ******** 이벤트 저장 폴더 생성 ********* //
+      $dir = "../viewPage/".$arr["event_idx"]; // 경로
+      mkdir($dir,0777,true);
+      
+      // ******** 이벤트 폴더 index.php 생성 ********* //
+      $index = fopen("../viewPage/".$arr["event_idx"]."/index.php", "x+");
+      $inner = "<?php include \"../indexPigure.php\";?>";
+      fwrite($index,$inner);
+
+      // ***** 업로드된 파일 저장 반복문 실행 ***** //
+      for($i=0;$i<count($_FILES['c_img']['tmp_name']);$i++){
+        $temp = $_FILES['c_img']['tmp_name'][$i];
+        $TypeExt = explode("/", $_FILES['c_img']['type'][$i]);
+        $fileType = $TypeExt[0];
+        $fileExt =  $TypeExt[1];
+        $extChk[$i] = false;
+        switch($fileExt){
+          case 'jpg' :
+          case 'jpeg' :
+          case 'png' :
+            $extChk[$i] = true;
+            break;
+  
+          default:
+            echo "<script>
+                alert(\"사용 가능 확장자(jpg, jpeg, png)외에는 사용이 불가능합니다. err 04\");
+                history.back();
+              </script>";
+            exit;
+            break;
+        }
+
+        if($fileType == 'image'){
+          if($extChk[$i]){
+            $res_file = "../viewPage/".$arr["event_idx"]."/".$i+1;
+            move_uploaded_file($temp, $res_file);
+            echo "<script>
+              alert(\"이벤트 등록 완료\");
+              location.href=\"event.php\";
+            </script>";
+          }else{
+            echo "<script>
+              alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요 err 05\");
+              history.back();
+            </script>";
+            exit;
+          }
+        }else{
+          echo "<script>
+            alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요 err 06\");
+            history.back();
+          </script>";
+          exit;
+        }
+      }
+      
+      
+
+      
+
+      
     break;
     // 이벤트 수정
     case "modify" :
