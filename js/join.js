@@ -158,7 +158,7 @@ $(function(){
       $("#list li").eq($(this).parent().next().index()).addClass("on")
       $(this).parent().next().addClass("onboard")
     };
-    // 다음 버튼 활성화 비동기식 처리 실행
+    // 다음 버튼 활성화 
     clearInterval(chk_interval);
   })
 

@@ -493,6 +493,7 @@ header.scroll{
   height: 520px;
   margin:auto;
   text-indent: -9999px;
+  overflow: hidden;
 }
 .banner1 { background: url(../img/banner_1.jpg) no-repeat -55px 0 ;}
 .banner2 { background: url(../img/banner_2.jpg) no-repeat -55px 0 ;}

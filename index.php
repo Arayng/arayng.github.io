@@ -74,23 +74,23 @@
         <h2 class="hide">이벤트 배너</h2>
         <ul>
           <li class="banner1_full">
-            <a href="#" class="b-box banner1">
+            <a href="viewPage/1/" class="b-box banner1">
               매일 최대 10,000원! 카카오페이 10% 할인
             </a>
           </li>
           <li class="banner2_full">
-            <a href="#" class="b-box banner2">
+            <a href="viewPage/2/" class="b-box banner2">
               매일 매일 선착순 9월 제휴 추가할인
             </a>
           </li>
           <li class="banner3_full">
-            <a href="#" class="b-box banner3">
-              인기 숙소 추천부터 맛집 할인까지! 강원도 여행 한방에 끝내기
+            <a href="viewPage/3/" class="b-box banner3">
+              위생,안전,편리함 인증완료! 품질인증숙소 최대 5만원 할인
             </a>
           </li>
           <li class="banner4_full">
-            <a href="#" class="b-box banner4">
-              위생,안전,편리함 인증완료! 품질인증숙소 최대 5만원 할인
+            <a href="viewPage/6/" class="b-box banner4">
+              인기 숙소 추천부터 맛집 할인까지! 강원도 여행 한방에 끝내기
             </a>
           </li>
         </ul>

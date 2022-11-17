@@ -31,10 +31,10 @@ $(function(){
     now_dx.push('-380'*dx)
   }
   // 지금 여기 페이저
-  $now_pager_ul = $("<ul class='now_pager'>");
-  $now_pager_li = $("<li>");
-  $(".now_slide").after($now_pager_ul);
-  $(".now_pager").append($now_pager_li)
+  now_pager_ul = $("<ul class='now_pager'>");
+  now_pager_li = $("<li>");
+  $(".now_slide").after(now_pager_ul);
+  $(".now_pager").append(now_pager_li)
   var now_pager = $(".now_pager li");
   $(now_pager).width($(".now_pager").width()/now_li.length);
   var pager_width = now_pager.width();
@@ -239,7 +239,8 @@ $(function(){
   },4000);
 
   // 이벤트 슬라이드 마우스 올리면 멈춤 / 다시시작
-  $(".b-box, .event .prev_btn, .evnet .next_btn").hover(function(){
+  $(".b-box, .event .left, .event .right").hover(function(){
+    console.log("마우스 올라옴")
     clearInterval(banner_interval);
   },function(){
     banner_interval = setInterval(function(){

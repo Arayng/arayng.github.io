@@ -4,11 +4,14 @@
 .content{ min-height: 800px;}
 .content h3{
   font-size: 24px;
+  font-weight: bold;
+  line-height: 50px;
 }
 #c_count{color: #f7323f; padding: 0 3px 0 20px;}
 
-.line{
-  margin: 10px 0 20px;
+.cnt{
+  border-bottom: 2px solid #000;
+  margin: 0px 0 20px;
 }
 
 /* 쿠폰 레이아웃 */
@@ -16,4 +19,69 @@
   width: 650px;
   height: 255px;
   margin: 40px auto;
+  background: url(../img/coupon.png);
+  position: relative;
 }
+
+.c-right{
+  width: 173px;
+  height: 255px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.c-right a{
+  display: block;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+.c-right .using{
+  position: relative;
+  height: 150px;
+}
+.c-right .coupon-detail{
+  position: relative;
+  top: 60px;
+}
+
+.c-left{
+  width: 472px;
+  height: 255px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 30px 20px;
+  box-sizing: border-box;
+}
+
+.c-left h4{
+  font-size: 24px;
+  font-weight: bold;
+}
+.c-left .c-title{
+  color: #f7323f;
+}
+.c-left .c-max,
+.c-left .c-comm,
+.c-left .limit,
+.c-left .notice
+{
+  font-size: 16px;
+  font-weight: normal;
+  color: #999;
+}
+
+.c-left .ab{
+  position: absolute;
+  left: 20px;
+  bottom: 30px;
+}
+
+.c-left .exp{
+  color: #f7323f;
+}
+.c-left .date{
+  color: #666;
+  padding-bottom: 7px;
+}
+

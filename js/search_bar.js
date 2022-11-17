@@ -78,7 +78,7 @@ $(function(){
   $(".depth3 a").click(function(){
     $("#search-local").val($(this).text());
     $("#search-local-bg").stop().fadeOut();
-    return 
+    return false;
   })
 
   
@@ -112,7 +112,7 @@ $(function(){
     $("#date2_value").val(picker.endDate.format('YYYY-MM-DD'));
     $("#date_1").val(picker.startDate.format('MM월 DD일'));
     $("#date_2").val(picker.endDate.format('MM월 DD일'));
-    $("#day").val(endDay - startDay);
+    $("#day").val(picker.endDate - picker.startDate);
   });
 
   //인원 선택
