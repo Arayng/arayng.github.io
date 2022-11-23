@@ -1,0 +1,68 @@
+1. 회원 :: members
+
+항목                      | 필드명          | 데이터타입(길이)          | 제약(조건 등)
+---------------------------------------------------------------------------------------------------------------------------
+인덱스                    | idx             | INT                     | PK, NN, AI(auto increment)
+아이디                    | u_id            | VARCAHR(50)             | NN, UQ(unique)
+비밀번호                  | u_pw            | VARCHAR(20)             | NN
+유저 이름                 | u_name          | VARCHAR(15)             | NN
+전화번호                  | u_tel           | VARCHAR(15)             | NN
+예약자 이름               | reservation     | VARCHAR(30)             | NN
+개인정보 활용동의 체크여부 | chk_privacy     | VARCHAR(1)              | default='N'       (선택 동의라서 체크여부 확인 Y or N)
+마케팅활용 동의 체크여부   | chk_marketing   | VARCHAR(1)              | default='N'       (선택 동의라서 체크여부 확인 Y or N)
+위치기반서비스 이용약관    | chk_location    | VARCHAR(1)              | default='N'       (선택 동의라서 체크여부 확인 Y or N)
+가입일                    | res_date        | datetime                | default='null'
+탈퇴여부                  | quit            | VARCHAR(1)              | default='0'       (회원정보 보관을 위한 탈퇴여부 체크로 탈퇴시키기)
+
+
+2. 이벤트 :: event
+
+항목            | 필드명          | 데이터타입(길이)  | 제약(조건, 특징 등)
+---------------------------------------------------------------------------------------------------------------------------
+인덱스          | event_idx       | INT             | PK, NN, AI(auto increment)
+이벤트 이름     | title            | VARCHAR(50)    | NN
+시작일          | start_date      | DATE            | NN
+종료일          | end_date        | DATE            | NN
+이미지 설명     | alt              | VARCHAR(100)   | NN (이미지 alt부분에 들어갈 문구)
+당첨자 발표여부  | winning         | VARCHAR(1)     | default='0' ( 1 또는 0)
+이벤트 종료여부  | end_cnt         | INT            | default='0' ( 1 또는 0 / 종료된 이벤트로 이동시키기 위해 이벤트 페이지 입장할때 변경여부 확인시키기)
+이미지 갯수     | img_cnt          | INT            | default='0' (추가:: 이벤트 상세페이지에들어갈 이미지 갯수가 몇개인지 파악하기 위해 추가)
+
+
+3. 이벤트 공지사항(당첨자 발표) :: e_notice
+
+항목            | 필드명          | 데이터타입(길이)  | 제약(조건, 특징 등)
+---------------------------------------------------------------------------------------------------------------------------
+게시글 인덱스    | ew_idx         | INT             | PK, NN, AI(auto increment) (ew : event write...)
+게시글 제목      | title          | VARCHAR(100)    | NN
+이벤트 링크      | link           | VARCHAR(100)    | NN
+작성 날짜        | date           | DATE            | NN
+게시글 내용      | content        | TEXT            | NN
+삭제 여부        | del            | INT             | default = '0' (데이터 보존을 위해 삭제여부 체크로 삭제)
+
+
+4. 쿠폰 정보 :: coupon_info
+
+항목            | 필드명          | 데이터타입(길이)  | 제약(조건, 특징 등)
+---------------------------------------------------------------------------------------------------------------------------
+쿠폰 인덱스(id)  | coupon_id      | INT              | PK, NN, AI(auto increment)
+할인율          | disc            | INT              | NN (disc : discount)
+할인율 이름(?)  | disc_title      | VARCHAR(100)     | NN (방학 기념 nn% 할인 같은 제목)
+최대 할인 금액  | max_disc        | INT              | NN
+쿠폰 이름       | title           | VARCHAR(100)     | NN (회원가입 감사 쿠폰 같은 소제목)
+쿠폰 사용 기한  | period          | INT              | NN
+최소 구매 금액  | min_limit       | INT              | NN
+안내사항(기타)  | notice          | VARCHAR(100)     | default = 'null'
+
+
+5. 쿠폰 매칭 TABLE :: coupon
+외래키를 이용해서 쿠폰정보와 회원정보를 매칭해서 실제로 쿠폰 발급한 데이터를 가지고있는 테이블
+
+항목            | 필드명          | 데이터타입(길이)  | 제약(조건, 특징 등)
+---------------------------------------------------------------------------------------------------------------------------
+쿠폰 번호       | coupon_no       | VARCHAR(20)     | PK, NN, UQ (쿠폰을 발급할떄 php에서 난수생성해서 입력)
+회원정보 외래키  | mem_idx        | INT              | NN (foreign key : '.members idx')
+쿠폰정보 외래키  | coupon_id      | INT              | NN (foreign key : '.coupon_info coupon_id')
+쿠폰 발급일     | start_date      | DATE            | NN (발급일 기준 사용기한 계산하기)
+쿠폰 사용여부   | use_coupon      | TINYINT(1)      | NN, default='0' (쿠폰 사용여부 확인해서 삭제시키기)
+

@@ -59,7 +59,7 @@
           <div class="profile-btngroup">
             <label for="profile_change" class="profile-change-btn">찾아보기</label>
             <input type="file" name="profile_change" id="profile_change" class="profile-change-btn-hide">
-            <button type="submit" class="profile-complete-btn" id="profile-complete-btn">변경하기</button>
+            <button type="submit" class="profile-complete-btn" id="profile_complete_btn" disabled>변경하기</button>
             <button type="button" class="profile-reset-btn" id="profile-reset-btn" onclick="del_profile()">삭제</button>
           </div>
         </form>
@@ -70,9 +70,10 @@
           <div class="info"><p id="name-now"><?php echo $result["u_name"];?></p></div>
           <button type="button" class="profile-change-btn" id="name_btn">변경하기</button>
         </div>
-        <form action="name_change.php" method="post" id="name_change" onsubmit="return name_update()">
+        <form action="change.php" method="post" id="name_change" onsubmit="return name_update()">
           <fieldset class="name-change-box">
             <legend>별명 변경</legend>
+            <input type="hidden" name="case" value="nickname">
             <input type="text" name="nickname" id="nickname" title="별명 변경" placeholder="변경할 닉네임을 입력해주세요">
           </fieldset>
           <p class="err-txt"></p>
@@ -88,9 +89,10 @@
           <div class="info"><p id="user-now"><?php echo $result["reservation"];?></p></div>
           <button type="button" class="profile-change-btn" id="user_btn">변경하기</button>
         </div>
-        <form action="user_change.php" method="post" id="user_change" onsubmit="return user_update()">
+        <form action="change.php" method="post" id="user_change" onsubmit="return user_update()">
           <fieldset class="user-change-box">
             <legend>예약자 이름 변경</legend>
+            <input type="hidden" name="case" value="user">
             <input type="text" name="user" id="user" title="예약자 이름 변경" placeholder="체크인시 필요한 정보에요!">
           </fieldset>
           <p class="err-txt"></p>
@@ -106,16 +108,17 @@
           <div class="info"><p id="tel-now"><?php echo $tel1["tel1"];?>-****-<?php echo $tel2["tel2"];?></p></div>
           <button type="button" class="profile-change-btn" id="tel_btn">변경하기</button>
         </div>
-        <form action="tel_change.php" method="post" id="tel_change" onsubmit="return tel_update()">
+        <form action="change.php" method="post" id="tel_change" onsubmit="return tel_update()">
           <fieldset class="tel-change-box">
             <legend>전화번호 변경</legend>
+            <input type="hidden" name="case" value="tel">
             <input type="tel" name="tel" id="tel" title="전화번호 변경" placeholder="체크인시 필요한 정보에요!">
             <button type="button" class="cont-submit-btn check-btn">인증번호 전송</button>
           </fieldset>
           <p class="err-txt telerr">" - " 없이 숫자만 입력해주세요</p>
           <div class="tel-change-box auth_box">
             <input type="text" name="auth" id="auth" title="인증번호 입력" placeholder="인증번호를 입력해주세요">
-            <button type="button" class="cont-submit-btn auth-check" id="auth_chk_btn">인증번호 확인</button>
+            <button type="button" class="cont-submit-btn auth-check" id="auth_chk_btn" disabled>인증번호 확인</button>
           </div>
           <p class="err-txt"></p>
           <div class="change-btngroup">

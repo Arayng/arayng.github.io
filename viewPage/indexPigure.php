@@ -47,12 +47,15 @@
     <section class="event-wrap">
       <?php
         $event_idx = basename(getcwd());
-        $sql = "select img_cnt from event where event_idx = '$event_idx';";
+        $sql = "select img_cnt, img_type from event where event_idx = '$event_idx';";
         $result = mysqli_query($dbcon,$sql);
-        $img_cnt = mysqli_fetch_array($result)["img_cnt"];
+        $arr = mysqli_fetch_array($result);
+        $img_cnt = $arr["img_cnt"];
+        $ext = explode("/",$arr["img_type"]);
+
         for($i=0;$i<$img_cnt;$i++){
       ?>
-        <img src="<?php echo $i+1;?>" alt="이벤트 이미지">
+        <img src="<?php echo ($i+1).".".$ext[$i];?>" alt="이벤트 이미지">
       <?php };?>
     </section>
   </div>  

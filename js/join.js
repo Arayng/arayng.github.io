@@ -7,9 +7,11 @@ var vali_auth = 0; //인증번호 인증 여부 확인
 // var tel_test = /^[0-9]{10,11}$/g; // 이게문제..
 var tel_test = new RegExp("^[0-9]{10,11}$"); // 34, 149번에서 활용
 var auth_test = new RegExp("^[0-9]{6,6}$");
+var args
+// var id_test = new RegExp("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i");
 var id_test = new RegExp("^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
 var pw_test = new RegExp("(?=.*[0-9])(?=.*[~`!@#$%\^&*()-+=])(?=.*[A-Za-z]).{8,12}$")
-var name_test = new RegExp("(?=.*[가-힣]).{3,6}$")
+var name_test = new RegExp("(?=.*[가-힣]).{2,6}$")
 
 window.onload = function(){
     // 약관동의 전체 선택
@@ -63,11 +65,6 @@ function user_join(){
   }
   if(!user_id.value){
     err_txt[0].textContent = "이메일을 입력해주세요.";
-    user_id.focus();
-    return false;
-  }else{err_txt[0].textContent = "";};
-  if(!id_test.test(user_id.value)){
-    err_txt[0].textContent = "이메일을 확인해주세요.(예시 Id@naver.com)";
     user_id.focus();
     return false;
   }else{err_txt[0].textContent = "";};
@@ -134,7 +131,7 @@ function user_join(){
 
 // 제이쿼리
 $(function(){
-  
+  // 약관동의 다음 버튼 자동활성화
   var chk_interval = setInterval(function(){
   if($("#tos_check").prop("checked") === true && $("#age_check").prop("checked") === true && $("#privacy_check").prop("checked") === true){
     vali_chk = 1;
@@ -143,7 +140,6 @@ $(function(){
     vali_chk = 0;
     $("#tos_next").animate({opacity:0.5},1);
   }
-  console.log(1)
 },100)
 
   // 이용약관 다음 버튼 누르면 필수동의사항 체크 여부 확인
@@ -164,9 +160,8 @@ $(function(){
 
 
   // 전화번호 입력 여부 확인 후 버튼 불들어오게
-  $("#phone").keyup(function(e){
-    $(this).val($(this).val().replace(/[^0-9]/g,""));
-    console.log($(this).val())
+  $("#phone").keyup(function(e){ 
+    $(this).val($(this).val().replace(/[^0-9]/g,"")); //숫자만 입력 가능하게
     if(tel_test.test($(this).val())){
       $("#tel_chk_btn").animate({opacity:1},1);
     }else{
@@ -175,8 +170,7 @@ $(function(){
   });
     // 인증번호 입력 여부 확인 후 버튼 불들어오게
     $("#authnum").keyup(function(){
-      $(this).val($(this).val().replace(/[^0-9]/g,""));
-      console.log($(this).val())
+      $(this).val($(this).val().replace(/[^0-9]/g,"")); // 숫자만 입력 가능하게
       if(auth_test.test($("#authnum").val())){
         $("#auth_chk_btn").animate({opacity:1},1);
       }else{
@@ -212,6 +206,41 @@ $(function(){
       $(this).parent().next().addClass("onboard")
     };
   })
+
+  // 아이디 중복검사 하기(blur = 포커스가 나갔을때)
+  $("#user_id").blur(function(){
+    if(id_test.test($(this).val())){
+      // 유효성 검사 통과
+      $(this).next().text("");
+      $.ajax({ // ajax로 아이디 중복검사
+        type : 'GET',
+        url : 'id_check.php?id='+$(this).val(),
+        success : function(result){
+          switch(result){
+            case '1' :
+              $('#user_id').next().css('color','#ff1c1c').text("사용할 수 없는 아이디입니다");
+            break;
+            case '0' :
+              $('#user_id').next().css('color','#5694f0').text("사용 가능한 아이디입니다");
+            break;
+            default :
+               $('#user_id').next().css('color','#ff1c1c').text("알 수 없는 오류");
+              console.log("error");
+            break;
+          }
+        },
+        error : function(err){
+          console.log(err)
+        }
+      });
+    }else{ 
+      // 유효성 검사 실패
+      $(this).next().css('color','#ff1c1c').text("이메일을 확인해주세요.(예시 Id@naver.com)");
+      $(this).focus();
+      return false;
+    };
+  });
+
   // 리스트 클릭
   $("#list li").click(function(){
     $("section").removeClass("onboard")

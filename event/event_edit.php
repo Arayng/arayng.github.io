@@ -23,9 +23,6 @@
       
       // 저장한 데이터 다시 불러오기(이미지 저장을 위해)
       $e_idx = mysqli_insert_id($dbcon); // 마지막에 저장된 데이터에서 pk값을 가져옴
-      $sql = "select * from event where event_idx=$e_idx;";
-      $pm = mysqli_query($dbcon,$sql);
-      $arr = mysqli_fetch_array($pm);
 
       if($e_idx == 0){
         echo "<script>
@@ -33,6 +30,7 @@
             history.back();
           </script>";
         exit;
+        mysqli_close($dbcon);
       }
 
       // 배너 업로드
@@ -42,7 +40,7 @@
       $file_type = $fileTypeExt[0];
       $file_ext =  $fileTypeExt[1];
       $ext_chk = false;
-
+      
       switch($file_ext){
         case 'jpg' :
         case 'jpeg' :
@@ -58,11 +56,12 @@
           exit;
           break;
       }
-
       if($file_type == 'image'){
         if($ext_chk){
-          $res_file = "./banner_img/banner_".$arr["event_idx"];
+          $res_file = "./banner_img/banner_".$e_idx.$file_ext;
           move_uploaded_file($temp_file, $res_file);
+          $sql = "update event set banner_type='$file_ext' where event_idx='$e_idx";
+          mysqli_query($dbcon,$sql);
         }else{
           echo "<script>
             alert(\"이벤트 등록에 실패하였습니다. 파일을 확인해주세요 err 02\");
@@ -82,27 +81,28 @@
       $extChk = []; //배열 사용을 위한 배열 선언
 
       // ******** 이벤트 저장 폴더 생성 ********* //
-      $dir = "../viewPage/".$arr["event_idx"]; // 경로
+      $dir = "../viewPage/".$e_idx; // 경로
       mkdir($dir,0777,true);
       
       // ******** 이벤트 폴더 index.php 생성 ********* //
-      $index = fopen("../viewPage/".$arr["event_idx"]."/index.php", "x+");
+      $index = fopen("../viewPage/".$e_idx."/index.php", "x+");
       $inner = "<?php include \"../indexPigure.php\";?>";
       fwrite($index,$inner);
-
+      $allExt = "";
       // ***** 업로드된 파일 저장 반복문 실행 ***** //
       for($i=0;$i<count($_FILES['c_img']['tmp_name']);$i++){
         $temp = $_FILES['c_img']['tmp_name'][$i];
         $TypeExt = explode("/", $_FILES['c_img']['type'][$i]);
         $fileType = $TypeExt[0];
-        $fileExt =  $TypeExt[1];
+        $fileExt = $TypeExt[1];
+        $allExt .= $fileExt."/";
         $extChk[$i] = false;
         switch($fileExt){
           case 'jpg' :
           case 'jpeg' :
           case 'png' :
             $extChk[$i] = true;
-            break;
+          break;
   
           default:
             echo "<script>
@@ -110,12 +110,12 @@
                 history.back();
               </script>";
             exit;
-            break;
+          break;
         }
 
         if($fileType == 'image'){
           if($extChk[$i]){
-            $res_file = "../viewPage/".$arr["event_idx"]."/".$i+1;
+            $res_file = "../viewPage/".$e_idx."/".($i+1).".".$fileExt;
             move_uploaded_file($temp, $res_file);
             echo "<script>
               alert(\"이벤트 등록 완료\");
@@ -136,12 +136,9 @@
           exit;
         }
       }
-      
-      
-
-      
-
-      
+      $sql = "update event set img_type='$allExt' where event_idx='$e_idx';";
+      mysqli_query($dbcon,$sql);
+      mysqli_close($dbcon);
     break;
     // 이벤트 수정
     case "modify" :

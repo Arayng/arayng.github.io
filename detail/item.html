@@ -6,19 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여기어때 - 상세페이지</title>
-  <link rel="stylesheet" href="css/search_bar.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/item.css">
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
-  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="../css/search_bar.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/daterangepicker.css" type="text/css">
+  <link rel="stylesheet" href="../css/magnific-popup.css">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript" src="js/search_bar.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup-setting.js"></script>
+  <script type="text/javascript" src="../js/daterangepicker.js"></script>
+  <script type="text/javascript" src="../js/index.js"></script>
+  <script type="text/javascript" src="../js/search_bar.js"></script>
+  <script type="text/javascript" src="../js/jquery.magnific-popup.js"></script>
+  <script type="text/javascript" src="../js/jquery.magnific-popup-setting.js"></script>
+  <link rel="stylesheet" href="css/item.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="js/item.js"></script>
 </head>
 
 <body>
@@ -73,7 +76,7 @@
           </fieldset>
         </form>
         <div class="close">
-          <a href="#"><img src="img/close_btn.png" alt="닫기"></a>
+          <a href="#"><img src="../img/close_btn.png" alt="닫기"></a>
         </div>
       </div>
       <div class="search-local-bg" id="search-local-bg">
@@ -767,18 +770,24 @@
   <!-- 아이템 -->
   <article class="content_wrap">
     <div class="layout">
+      <!-- swiper -->
       <div class="img_box">
-        <div class="cont_main_img"></div>
-        <ul class="cont_img">
-          <li><a href="#"><img src="" alt="img1"></a></li>
-          <li><a href="#"><img src="" alt="img2"></a></li>
-          <li><a href="#"><img src="" alt="img3"></a></li>
-          <li><a href="#"><img src="" alt="img4"></a></li>
-          <li><a href="#"><img src="" alt="img5"></a></li>
-        </ul>
-        <div class="img_left"><a href="#" class="img_prev_btn">이전</a></div>
-        <div class="img_right"><a href="#" class="img_next_btn">다음</a></div>
+        <div class="cont_main_img " id="main-slider">
+          <img src="../img/special_thum1.jpg" alt="">
+        </div>
+        <div class="swiper">
+          <div class="cont_img swiper-wrapper" id="thumbnail-slider">
+            <div class="swiper-slide"><img src="../img/special_thum1.jpg" alt="img1"></div>
+            <div class="swiper-slide"><img src="../img/special_thum2.jpg" alt="img2"></div>
+            <div class="swiper-slide"><img src="../img/special_thum3.jpg" alt="img3"></div>
+            <div class="swiper-slide"><img src="../img/special_thum4.jpg" alt="img4"></div>
+            <div class="swiper-slide"><img src="../img/special_thum5.jpg" alt="img5"></div>
+          </div>
+        </div>
+        <a href="#" class="img_prev_btn">이전</a>
+        <a href="#" class="img_next_btn">다음</a>
       </div>
+      <!-- swiper -->
       <section class="info">
         <h2 class="cont_name">명동 밀리오레호텔</h2>
         <p class="cont_star"></p>
@@ -786,12 +795,14 @@
         <p class="cont_local"><span class="local_length">353m</span>중구 충무로1가</p>
         <p class="cont_comment"></p>
         <h3 class="hide">숙소 이벤트</h3>
-        <ul class="cont_event">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <div class="cont_event_bg">
+          <ul class="cont_event">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
       </section>
     </div>
     <section class="service">
@@ -808,21 +819,41 @@
       </ul>
     </section>
     <div class="tab">
-      <button type="tab_btn">객실안내 / 예약</button>
-      <button type="tab_btn">상세정보</button>
-      <button type="tab_btn">리뷰</button>
+      <a href="#" class="tab-on">객실안내 / 예약</a>
+      <a href="#">상세정보</a>
+      <a href="#">리뷰</a>
     </div>
     <section class="items">
       <div class="room">
-        <div class="room_img"></div>
-        <h4 class="room_name"></h4>
-        <div class="price">
-          <strong class="room_type"></strong>
-          <b></b>
+        <div class="room_img">
+          <img src="../img/special_thum4.jpg" alt="이미지 들어올 자리">
         </div>
-        <div class="price">
-          <strong class="room_type"></strong>
-          <b></b>
+        <div class="room_right">
+          <h4 class="room_name">1번방</h4>
+          <div class="priceBox">
+            <div class="price left">
+              <strong class="room_type">대실</strong>
+              <div>
+                <b>50,000원</b>
+              </div>
+              <ul>
+                <li><span>마감시간</span>23시까지</li>
+                <li><span>이용시간</span>최대 6시간</li>
+              </ul>
+              <button type="button">여기 예약하기</button>
+            </div>
+            <div class="price right">
+              <strong class="room_type">숙박</strong>
+              <div>
+                <b>80,000원</b>
+              </div>
+              <ul>
+                <li><span>입실시간</span>18시부터</li>
+                <li><span>퇴실시간</span>익일 11시</li>
+              </ul>
+              <button type="button">여기 예약하기</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -872,5 +903,7 @@
       </div>
     </div>
   </footer>
+
+
 </body>
 </html>

@@ -4,12 +4,6 @@
   $sql = "select * from members where u_id='$s_id';";
   $pm = mysqli_query($dbcon,$sql);
   $mem = mysqli_fetch_array($pm);
-
-  $sql = "select a.coupon_no, a.use_coupon, b.* from coupon AS a join coupon_info AS b ON a.coupon_id = b.coupon_id where mem_idx = '$s_idx';";
-  $pm = mysqli_query($dbcon,$sql);
-  $coupon = mysqli_fetch_array($pm);
-  $today = date("Y-m-d");
-  $exp = intval((strtotime($coupon['end_date'])-strtotime($today)) / 86400);
 ?>
 
 <!DOCTYPE html>
@@ -44,18 +38,33 @@
 
     <!-- 컨텐츠 -->
     <section class="content">
+      <?php 
+        $sql = "select a.coupon_no, a.use_coupon, a.start_date, b.* from coupon AS a join coupon_info AS b ON a.coupon_id = b.coupon_id where mem_idx = '$s_idx';";
+        $pm = mysqli_query($dbcon,$sql);
+
+        $today = date("Y-m-d");
+      ?>
       <div class="cnt">
         <h3>보유중인 쿠폰 <span id="c_count"><?php echo mysqli_num_rows($pm);?></span>장</h3>
       </div>
+      <?php
+          while($coupon = mysqli_fetch_array($pm)){
+            $disc_title = str_replace("&span","<span class=\"c-title\">",$coupon['disc_title']);
+            $disc_title = str_replace("&/span",'</span>',$disc_title);
+            // 시작일 + 쿠폰별 기한 = 종료일
+            $strtoed =intval(strtotime($coupon['start_date'])+($coupon['period'] * 86400));
+            $ed = date('Y. m. d',$strtoed);
+            $exp = intval(($strtoed-strtotime($today)) / 86400);
+      ?>
       <div class="c-box">
         <div class="c-left">
-          <h4><?php echo $coupon['disc_title'];?><span class="c-max"> 최대 <?php echo $coupon['max_disc']?>원 할인</span></h4>
+          <h4><?php echo $disc_title;?><span class="c-max"> 최대 <?php echo number_format($coupon['max_disc'])?>원 할인</span></h4>
           <p class="c-comm"><?php echo $coupon['title'];?></p>
           <div class="ab">
             <p class="exp"><?php echo $exp;?>일 남음</p>
-            <p class="date">사용 가능일 ~ 사용 종료일</p>
-            <p class="limit">제한금액</p>
-            <p class="notice">공지사항</p>
+            <p class="date"><?php echo $coupon['start_date'];?> ~ <?php echo $ed;?></p>
+            <p class="limit"><?php echo number_format($coupon['min_limit']);?>원 이상 결제시 사용 가능</p>
+            <p class="notice"><?php echo $coupon['notice'];?></p>
           </div>
         </div>
         <div class="c-right">
@@ -63,6 +72,9 @@
           <a href="" class="coupon-detail">할인쿠폰 상세정보</a>
         </div>
       </div>
+      <?php };
+        mysqli_close($dbcon);
+      ?>
     </section>
   </div>
 </body>

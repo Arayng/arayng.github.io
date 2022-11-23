@@ -63,7 +63,7 @@
             <a href="e_modify.php?id=<?php echo $arr["event_idx"];?>" class="e_modify">수정하기</a>
           <?php };?>
           <a href="../viewPage/<?php echo $arr["event_idx"];?>/" class="event-img">
-            <img src="banner_img/banner_<?php echo $arr["event_idx"];?>" alt="<?php echo $arr["alt"];?>">
+            <img src="banner_img/banner_<?php echo $arr["event_idx"].".".$arr["banner_type"];?>" alt="<?php echo $arr["alt"];?>">
           </a>
         </li>
         <?php };?>        

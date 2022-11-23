@@ -17,14 +17,18 @@ $(function(){
     var cancel_input = $(this).closest("form").find("input");
     cancel_input.val("");
   });
-
+  // 프로필 변경 버튼 활성화
+  $('#profile_change').change(function(){
+    $("#profile_complete_btn").attr("disabled",false);
+  })
   // 전화번호 유효성 검사 / 인증번호 입력창 생성
   $(".auth_box").slideUp(300);
   $("#tel_change .check-btn").click(function(){
     if(tel_test.test($("#tel").val())){
-      $(".auth_box").slideToggle(300)
-      $("#tel").attr("readonly",true)
-      $("#auth").removeAttr("readonly")
+      $(".auth_box").slideToggle(300);
+      $("#tel").attr("readonly",true);
+      $(".check-btn").attr("disabled",true);
+      $("#auth").removeAttr("readonly");
       $("#auth").focus();
       alert("인증번호를 전송하였습니다.");
         return tel_chk = 1;
@@ -37,12 +41,12 @@ $(function(){
   $("#auth").keyup(function(){
     $(this).val($(this).val().replace(/[^0-9]/g,""));
     if(auth_test.test($("#auth").val())){
-      $("#auth_chk_btn").css('background-color','#5694f0').css('color','#fff');
+      $("#auth_chk_btn").css('background-color','#5694f0').css('color','#fff').attr("disabled",false);
     }else{
-      $("#auth_chk_btn").css('background-color','#fff').css('color','#5694f0');
+      $("#auth_chk_btn").css('background-color','#fff').css('color','#5694f0').attr("disabled",true);
     };
   });
-  // 인증번호 확이버튼 액션(유효성 검사)
+  // 인증번호 확인 유효성 검사
   $("#auth_chk_btn").click(function(){
     if(auth_test.test($("#auth").val())){
       alert("인증이 완료되었습니다.");

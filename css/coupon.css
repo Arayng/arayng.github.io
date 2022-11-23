@@ -85,3 +85,97 @@
   padding-bottom: 7px;
 }
 
+/* 쿠폰 제작 페이지 */
+.edit-wrap{
+  width: 1200px;
+  margin: 120px auto;
+}
+.editor{
+  width: 1200px;
+  background-color: #f6f6f6;
+  box-sizing: border-box;
+  padding: 15px 30px 15px 300px;
+}
+.editor-fieldset{
+  border: none;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.editor label{
+  display: inline-block;
+  width: 150px;
+  text-align: end;
+  margin-right: 10px;
+}
+.fbox{
+  margin: 15px 0;
+}
+.editor-fieldset input{
+  width: 300px;
+  height: 30px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+#disc,
+#max,
+#period,
+#min{
+  width: 170px;
+  text-align: end;
+}
+/* number 증감버튼 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.b_group{
+  display: flex;
+  width: 750px;
+  margin: auto;
+  justify-content: flex-end;
+}
+.b_group button{
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  font-family: 'yg-jalnan';
+  font-weight: normal;
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.4s, color 0.4s;
+}
+.delete_btn{
+  border: 1px solid #ff7a83 ;
+  background: #ff7a83 !important;
+  color: #fff;
+  margin-right: 10px;
+}
+.delete_btn:hover{
+  background: #ff0011 !important;
+  color: #fff;
+}
+.cancel_btn{
+  border: 1px solid #f7323f;
+  color: #f7323f;
+  margin-right: 10px;
+}
+.cancel_btn:hover{
+  background: #f7323f;
+  color: #fff;
+}
+.submit_btn{
+  border: 1px solid #5694f0;
+  color: #5694f0;
+}
+.submit_btn:hover{
+  background: #5694f0;
+  color: #fff;
+}

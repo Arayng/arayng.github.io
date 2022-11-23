@@ -106,12 +106,12 @@
             <div class="info_inbox">
               <label for="user_pw">비밀번호</label>
               <p class="pw_guide">* 8 ~ 12자리의 영문, 숫자, 특수문자 포함</p>
-              <input type="text" name="user_pw" id="user_pw" placeholder="비밀번호를 입력해주세요">
+              <input type="password" name="user_pw" id="user_pw" placeholder="비밀번호를 입력해주세요">
               <p class="err_txt"></p>
             </div>
             <div class="info_inbox">
               <label for="user_pw_check">비밀번호 확인</label>
-              <input type="text" name="user_pw_check" id="user_pw_check" placeholder="비밀번호를 한번 더 입력해주세요">
+              <input type="password" name="user_pw_check" id="user_pw_check" placeholder="비밀번호를 한번 더 입력해주세요">
               <p class="err_txt"></p>
             </div>
             <div class="info_inbox">

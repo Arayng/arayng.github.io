@@ -110,6 +110,15 @@
   border-radius: 7px;
 }
 
+.profile-complete-btn:disabled{
+  color:#5694f0;
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #5694f0;
+  border-radius: 7px;
+  cursor: default;
+}
+
 .profile-reset-btn{
   display: block;
   width: 90px;
@@ -214,6 +223,13 @@ input:read-only{
   color: #5694F0;
   transition: background 300ms;
   transition: color 300ms;
+}
+.check-btn:disabled, .auth-check:disabled{
+  outline: none;
+  cursor: default;
+}
+.check-btn:disabled:hover, .auth-check:disabled:hover{
+  border: 1px solid #5694f0;
 }
 /* 회원탈퇴 버튼 */
 

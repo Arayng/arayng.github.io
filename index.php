@@ -50,6 +50,7 @@
 
     <!-- 지금, 여기 -->
     <div class="now-slide-bg">
+      <div class="bg"></div>
       <section class="now_wrap">
         <div class="now_text_wrap">
           <h2 class="now_title">지금, 여기</h2>

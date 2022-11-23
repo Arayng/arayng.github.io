@@ -19,8 +19,8 @@
       
       <h2 class="hide">상단 메뉴</h2>
       <ul class="top_menu">
-        <li><a href="search.html" class="top_menu1">내주변</a></li>
-        <li><a href="event.html" class="top-menu2">이벤트</a></li>
+        <li><a href="#" class="top_menu1">내주변</a></li>
+        <li><a href="../event/evet.php" class="top-menu2">이벤트</a></li>
         <li><a href="../login/logout.php" class="top_menu3 logout">로그아웃</a></li>
       </ul>
     </div>
@@ -29,7 +29,7 @@
 
   <div class="wrap">
     <div class="text_box">
-      <p>환영합니다. <?php echo $s_name; ?>님</p>
+      <p>환영합니다. <?php echo $s_name;?> 님</p>
       <p><span class="f_color">회원 가입</span>이</p>
       <p>완료되었습니다.</p>
     </div>

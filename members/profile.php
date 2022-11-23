@@ -1,11 +1,5 @@
 <?php
 include "../inc/session.php";
-//$_FILES에 담긴 배열 정보 구하기.
-var_dump($_FILES);
-
-// php 내부 소스에서 html 태그 적용 - 선긋기
-echo "<hr>";
-
 // 임시로 저장된 정보(tmp_name)
 $temp_file = $_FILES['profile_change']['tmp_name'];
 // 파일타입 및 확장자 체크

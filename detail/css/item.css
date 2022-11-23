@@ -1,0 +1,228 @@
+/* 상품페이지 컨텐츠 랩 */
+
+.content_wrap{
+  width: 1200px;
+  margin: 70px auto;
+}
+
+
+/* 레이아웃용 div */
+.layout{
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 이미지 */
+.img_box{
+  width: 550px;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+.cont_main_img{
+  width: 580px;
+  height: 380px;
+  margin-bottom: 10px;
+}
+.cont_main_img img{
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide{
+  width: 130px;
+}
+.swiper{
+  display: flex;
+  width: 580px;
+  justify-content: space-evenly;
+  /* margin: 10px 0 0; */
+}
+.cont_img img{
+  display: block;
+  margin: auto;
+  padding: 3px;
+  width: 95%;
+  height: 90px;
+}
+.swiper-slide-active{
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.img_prev_btn{
+  display: block;
+  width: 30px;
+  height: 55px;
+  background: #fff url(../../img/scroll-lb.png) no-repeat 70% 50% / 70%;
+  text-indent: -9999px;
+  border-radius: 10px;
+  opacity: 0.2;
+  transition: all 0.4s;
+  position: absolute;
+  bottom: 37px !important;
+  left: -10px;
+  z-index: 10;
+}
+.img_prev_btn:hover{
+  opacity: 1;
+}
+.img_next_btn{
+  display: block;
+  width: 30px;
+  height: 55px;
+  background: #fff url(../../img/scroll-rb.png) no-repeat 30% 50% / 70%;
+  text-indent: -9999px;
+  border-radius: 10px;
+  opacity: 0.2;
+  transition: all 0.4s;
+  position: absolute;
+  bottom: 37px !important;
+  right: -10px;
+  z-index: 10;
+}
+.img_next_btn:hover{
+  opacity: 1;
+}
+
+/* 상품 정보 */
+
+.info{
+  width: 550px;
+}
+
+.cont_name{
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 10px 60px;
+}
+
+
+
+
+/* 탭메뉴 */
+.tab{
+  width: 100%;
+  line-height: 40px;
+  margin-top: 10px;
+}
+.tab a{
+  display: inline-block;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+.tab-on{
+  color:#f7323f;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 방 */
+.items{
+  padding: 20px;
+  box-sizing: border-box;
+}
+.room{
+  width: 940px;
+  height: 325px;
+  margin: auto;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  display: flex;
+}
+.room_img{
+  width: 400px;
+  margin-right: 25px;
+  position: relative;
+}
+.room_img::after{
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url(../../img/ico_picview.png) 0 0 / contain;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.room_img img{
+  width: 100%;
+  height: 100%;
+}
+.room_right{
+  width: 450px;
+}
+.room_name{
+  display: block;
+  height: 37px;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+}
+.priceBox{
+  display: flex;
+}
+.price{
+  width: 50%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  position: relative
+}
+.price div{
+  position: relative;
+  padding-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #999;
+  font-size: 22px;
+  text-align: right;
+
+}
+.price .room_type{
+  position: relative;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+}
+.price ul li{
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: right;
+  color: rgba(0,0,0,0.56);
+}
+.price ul li span{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.price.left{
+  border-right: 1px solid #999;
+}
+
+.price button{
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #f7323fe6;
+  border: none;
+  border-radius: 5px;
+}
+.price button:hover{
+  background-color: #f7323f;
+  
+}

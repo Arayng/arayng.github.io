@@ -51,6 +51,15 @@
                 height: 600,
                 width: 900,
                 lang:"ko-KR",
+                toolbar: [
+                  ['fontsize', ['fontsize']],
+                  ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+                  ['color', ['forecolor','color']],
+                  ['para', ['ul', 'ol', 'paragraph']],
+                  ['table', ['table']],
+                  ['height', ['height']],
+                  ['options', ['fullscreen', 'codeview', 'help']],
+                ]
               })
             })
           </script>
