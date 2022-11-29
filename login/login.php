@@ -8,13 +8,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여기어때 - 로그인</title>
-  <link rel="stylesheet" href="../css/login.css">
-  <script type="text/javascript" src="../js/login.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <link rel="stylesheet" href="//localhost/css/login.css">
+  <script type="text/javascript" src="//localhost/js/login.js"></script>
 </head>
 <body>
   <div class="wrap">
-    <h1 class="logo"><a href="../index.php">여기어때</a></h1>
-    <form action="lg.php" method="post" id="login">
+    <h1 class="logo"><a href="//localhost/index.php">여기어때</a></h1>
+    <form action="loginAction.php" method="post" id="login">
       <fieldset>
         <legend class="hide">로그인</legend>
         <div>
@@ -29,8 +30,8 @@
       </fieldset>
     </form>
       <div class="box">
-        <a href="#" class="left_btn">아이디 / 비밀번호 찾기</a>
-        <a href="../members/join.php" class="right_btn">회원가입</a>
+        <a href="find.php" class="left_btn">아이디 / 비밀번호 찾기</a>
+        <a href="//localhost/members/join.php" class="right_btn">회원가입</a>
       </div>
       <div class="sns_box">
         <h2 class="sns">SNS 로그인</h2>

@@ -1,4 +1,7 @@
-<?php include "inc/session.php";?>
+<?php 
+  include "inc/session.php";
+  include "inc/dbcon.php"
+?>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,26 +10,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여기어때</title>
   <?php include "inc/src.php";?>
-  <!-- <link rel="stylesheet" href="css/search_bar.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="js/daterangepicker.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript" src="js/search_bar.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-  <script type="text/javascript" src="js/jquery.magnific-popup-setting.js"></script> -->
 </head>
-
 <body>
-  <!-- 헤더 영역 -->
+<!-- 헤더 영역 -->
   <?php include "inc/header.php"; ?>
   <div class="void"></div>
-  <!-- 링크 메뉴 -->
   <div class="main">
+<!-- 링크 메뉴 -->
     <section class="link_menu cf">
       <h2 class="hide">링크 메뉴</h2>
       <h3 class="hide">숙소</h3>
@@ -38,17 +28,35 @@
         <li><a href="#" class="camp">캠핑 / 글램핑</a></li>
         <li><a href="#" class="guest">게하 / 한옥</a></li>
       </ul>
-      <!-- <h3 class="hide">여가</h3>
-      <ul class="menu_bot cf">
-        <li><a href="#" class="place">공간대여</a></li>
-        <li><a href="#" class="airplane">국내 항공</a></li>
-        <li><a href="#" class="rent">렌터카</a></li>
-        <li><a href="#" class="leisure">레저 / 티켓</a></li>
-        <li><a href="#" class="food_nav">맛집</a></li>
-      </ul> -->
     </section>
+<!-- 이벤트배너 영역 -->
+  <!-- 이벤트 정보 가져오는 php -->
 
-    <!-- 지금, 여기 -->
+    <section class="event">
+      <div class="banner_box">
+        <h2 class="hide">이벤트 배너</h2>
+        <ul>
+          <?php 
+            $sql = "select * from event where end_cnt = 0 order by event_idx desc;";
+            $result = mysqli_query($dbcon, $sql);
+            while($arr = mysqli_fetch_array($result))
+            {
+          ?>
+          <li class="banner1_full">
+            <a href="event/viewPage/<?php echo $arr["event_idx"]?>/" class="b-box">
+              <img src="event/banner_img/banner_<?php echo $arr["event_idx"].".".$arr["banner_type"];?>" alt="<?php echo $arr["alt"]?>">
+            </a>
+          </li>
+          <?php 
+            };
+            mysqli_close($dbcon)
+          ?>
+        </ul>
+      </div>
+      <div class="left"><a href="#" class="prev_btn">이전</a></div>
+      <div class="right"><a href="#" class="next_btn">다음</a></div>
+    </section>
+<!-- 지금, 여기 -->
     <div class="now-slide-bg">
       <div class="bg"></div>
       <section class="now_wrap">
@@ -69,38 +77,7 @@
         <div class="right"><a href="#" class="next_btn">다음</a></div>
       </section>
     </div>
-    <!-- 이벤트배너 영역 -->
-    <section class="event">
-      <div class="banner_box">
-        <h2 class="hide">이벤트 배너</h2>
-        <ul>
-          <li class="banner1_full">
-            <a href="viewPage/1/" class="b-box banner1">
-              매일 최대 10,000원! 카카오페이 10% 할인
-            </a>
-          </li>
-          <li class="banner2_full">
-            <a href="viewPage/2/" class="b-box banner2">
-              매일 매일 선착순 9월 제휴 추가할인
-            </a>
-          </li>
-          <li class="banner3_full">
-            <a href="viewPage/3/" class="b-box banner3">
-              위생,안전,편리함 인증완료! 품질인증숙소 최대 5만원 할인
-            </a>
-          </li>
-          <li class="banner4_full">
-            <a href="viewPage/6/" class="b-box banner4">
-              인기 숙소 추천부터 맛집 할인까지! 강원도 여행 한방에 끝내기
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="left"><a href="#" class="prev_btn">이전</a></div>
-      <div class="right"><a href="#" class="next_btn">다음</a></div>
-    </section>
-    
-    <!-- 숙소 추천 -->
+<!-- 숙소 추천 -->
     <div class="rec_line">
       <section class="recomm cf">
         <h2 class="recomm_title title">주변 인기, <span class="f_color">여기 어때?</span></h2>
@@ -203,12 +180,11 @@
             </li>
           </ul>
         </div>
-
         <div class="left"><a href="#" class="prev_btn">이전</a></div>
         <div class="right"><a href="#" class="next_btn">다음</a></div>
       </section>
     </div>
-    <!-- 특가 상품 -->
+<!-- 특가 상품 -->
     <section class="sp">
       <h2 class="sp_title title"><span class="f_color">오늘의 체크인</span> 특가 호텔</h2>
       <div class="sp_box">
@@ -247,8 +223,7 @@
       </div>
       <a href="#" class="sp_more">특가 상품 더보기</a>
     </section>
-
-    <!-- 최근 본 상품 -->
+<!-- 최근 본 상품 -->
     <div class="re_back">
       <section class="recent">
         <h2 class="recent_title title">최근 본 상품</h2>
@@ -293,8 +268,7 @@
         <a href="#" class="recent_more">더보기</a>
       </section>
     </div>
-
-    <!-- 맛집 -->
+<!-- 맛집 -->
     <section class="food">
       <h2 class="food_title title">맛집도 <span class="f_color">취향대로 ~ </span></h2>
       <div class="food_wrap">
@@ -331,8 +305,7 @@
       </div>
       <a href="#" class="food_more">맛집 더보기</a>
     </section>
-
-    <!-- 기업고객 -->
+<!-- 기업고객 -->
     <section class="cor cf">
       <div class="left_box">
         <a href="#" class="ad_box">
@@ -347,7 +320,7 @@
       </div>
     </section>
   </div>
-  <!-- 사이드메뉴 -->
+<!-- 사이드메뉴 -->
   <aside class="floating-bar">
     <ul>
       <li><a href="#" class="f-app">앱 다운</a></li>
@@ -364,49 +337,7 @@
       </a>
     </div>
   </aside>
-  <!-- 푸터 -->
-  <footer>
-    <div class="foot_wrap">
-      <section class="sns">
-        <h2 class="hide">sns 영역</h2>
-        <ul>
-          <li><a href="https://www.facebook.com/goodchoiceofficial" target="_blank" class="facebook">페이스북</a></li>
-          <li><a href="https://blog.gccompany.co.kr/" target="_blank" class="blog">블로그</a></li>
-        </ul>
-      </section>
-
-      <section class="foot_term">
-        <h2 class="hide">이용약관 및 정책</h2>
-        <ul>
-          <li><a href="#">회사소개</a></li>
-          <li><a href="#">이용약관</a></li>
-          <li><a href="#"><b>개인정보처리방침</b></a></li>
-          <li><a href="#">소비자 분쟁해결 기준</a></li>
-          <li><a href="#">사업자 정보 확인</a></li>
-        </ul>
-      </section>
-      <section class="foot_group">
-        <h2 class="hide">그룹사이트 등</h2>
-        <ul>
-          <li><a href="#">여기어때 마케팅센터</a></li>
-          <li><a href="#">액티비티 호스트센터</a></li>
-          <li><a href="#">HOTEL 여기어때</a></li>
-          <li><a href="#">콘텐츠산업진흥법에의한 표시</a></li>
-        </ul>
-      </section>
-      <div class="foot_service">
-        <b>고객행복센터 1670-6520</b> <span class="sc_time">오전 9시 ~ 새벽 3시</span>
-      </div>
-      <div class="foot_com">
-        <h2 class="hide">회사 정보</h2>
-        <p>(주) 여기어떄 컴퍼니</p>
-        <address>주소 : 서울특별시 강남구 봉은사로 479, 479타워 11층 | 대표이사 : 정명훈 | 사업자등록번호 : 742-86-00224</address>
-        <i>통신판매번호 : 2017-서울강남-01779 | 관광사업자 등록번호 : 제1026-24호 | 전화번호 : 1670-6250 | 전자우편주소 : help@goodchoice.kr</i>
-        <p>(주) 여기어때컴퍼니는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.</p>
-        <p>Copyright GC COMPONY Corp. All rights reserved</p>
-      </div>
-    </div>
-  </footer>
+<!-- 푸터 -->
+  <?php include $_SERVER["DOCUMENT_ROOT"]."/inc/footer.php";?>
 </body>
-
 </html>

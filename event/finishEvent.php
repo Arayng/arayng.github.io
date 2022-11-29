@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="css/event.css">
 </head>
 <body>
-<!-- 헤더영역 -->
+<!-- 헤더 영역 -->
   <?php include $_SERVER["DOCUMENT_ROOT"]."/inc/header.php";?>
 <!-- 컨텐츠 영역 -->
   <div class="box">
@@ -35,20 +35,20 @@
   <div class="wrap">
     <section class="tap-menu">
       <ul>
-        <li><a href="event.php" class="on">진행중인 이벤트</a></li>
-        <li><a href="finishEvent.php">종료된 이벤트</a></li>
+        <li><a href="event.php">진행중인 이벤트</a></li>
+        <li><a href="finishEvent.php" class="on">종료된 이벤트</a></li>
         <li><a href="annEvent.php">당첨자 발표</a></li>
       </ul>
       <?php if($s_id == 'admin@admin'){?>
-        <a href="eventRegist.php" class="e_regi">이벤트 등록하기</a>
+      <a href="e_regi.php" class="e_regi">이벤트 등록하기</a>
       <?php };?>
     </section>
     <section class="event-wrap">
       <ul>
         <?php
-          $sql = "select * from event where end_cnt=0;";
-          $paging_sql = "select * from event where end_cnt=0 order by event_idx desc";
-          include $_SERVER["DOCUMENT_ROOT"]."/inc/pager.php";
+          $sql = "select * from event where end_cnt=1;";
+          $paging_sql = "select * from event where end_cnt=1 order by event_idx desc";
+          include "../inc/pager.php";
           while($arr = mysqli_fetch_array($paging_sql_result)){
             $s_explode = explode("-", $arr["start_date"]);
             $s_date = $s_explode[0].'. '.$s_explode[1].'. '.$s_explode[2].'. ';
@@ -56,18 +56,18 @@
             $e_explode[0] >= 9999 ? $e_date = '별도 안내시 까지': $e_date = $e_explode[0].'. '.$e_explode[1].'. '.$e_explode[2].'. ';
         ?>
         <li>
-          <h3 class="event-title"><?php echo $arr["title"]?></h3>
-          <p class="event-period">기간 : <?php echo $s_date;?> ~ <?php echo $e_date;?></p>
+          <h3 class="event-title ended"><?php echo $arr["title"]?></h3>
+          <p class="event-period ended">기간 : <?php echo $s_date;?> ~ <?php echo $e_date;?></p>
           <?php if($s_id == 'admin@admin'){?>
-            <a href="eventModify.php?id=<?php echo $arr["event_idx"];?>" class="e_modify">수정하기</a>
+            <a href="e_modify.php?id=<?php echo $arr["event_idx"];?>" class="e_modify">수정하기</a>
           <?php };?>
-          <a href="viewPage/<?php echo $arr["event_idx"];?>/" class="event-img">
-            <img src="banner_img/banner_<?php echo $arr["event_idx"].".".$arr["banner_type"];?>" alt="<?php echo $arr["alt"];?>">
+          <a href="#" class="event-img ended">
+            <img src="banner_img/banner_<?php echo $arr["event_idx"].".".$arr["banner_type"];?>" alt="<?php echo $arr["alt"];?>" class="ended">
           </a>
         </li>
         <?php };?>        
       </ul>
-      <?php include $_SERVER["DOCUMENT_ROOT"]."/inc/pager_list.php";?>
+      <?php include "../inc/pager_list.php";?>
     </section>
   </div>
 <!-- 푸터 영역 -->

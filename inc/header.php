@@ -1,18 +1,17 @@
 
     <header>
     <div class="header_wrap">
-      <h1 class="logo"><a href="./index.php">여기어때</a></h1>
-      
+      <h1 class="logo"><a href="//localhost/index.php">여기어때</a></h1>
       <h2 class="hide">상단 메뉴</h2>
       <ul class="top_menu">
         <li><a href="#" class="search_btn basic">검색</a></li>
-        <li><a href="search.html" class="top_menu1 basic">내주변</a></li>
-        <li><a href="./event/event.php" class="top_menu2 basic">이벤트</a></li>
+        <li><a href="//localhost/search.html" class="top_menu1 basic">내주변</a></li>
+        <li><a href="//localhost/event/event.php" class="top_menu2 basic">이벤트</a></li>
       <?php if(!$s_idx){ ?>
-        <li><a href="./login/login.php" class="top_menu3 basic">로그인</a></li>
+        <li><a href="//localhost/login/login.php" class="top_menu3 basic">로그인</a></li>
       <?php }else{ ?>
-        <li><a href="./members/mymenu.php" class="top_menu4 basic">내정보</a></li>
-        <li><a href="./login/logout.php" class="top_menu3 logout">로그아웃</a></li>
+        <li><a href="//localhost/members/mymenu.php" class="top_menu4 basic">내정보</a></li>
+        <li><a href="//localhost/login/logout.php" class="top_menu3 logout">로그아웃</a></li>
       <?php } ?>
       </ul>  
     </div>    
@@ -55,7 +54,7 @@
           </fieldset>
         </form>
         <div class="close">
-          <a href="#"><img src="img/close_btn.png" alt="닫기"></a>
+          <a href="#"><img src="//localhost/img/close_btn.png" alt="닫기"></a>
         </div>
       </div>
       <div class="search-local-bg" id="search-local-bg">

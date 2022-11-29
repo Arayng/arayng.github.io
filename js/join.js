@@ -214,7 +214,7 @@ $(function(){
       $(this).next().text("");
       $.ajax({ // ajax로 아이디 중복검사
         type : 'GET',
-        url : 'id_check.php?id='+$(this).val(),
+        url : 'joinActionAjax.php?id='+$(this).val(),
         success : function(result){
           switch(result){
             case '1' :
@@ -260,6 +260,14 @@ $(function(){
         console.log(1)
       
       },100)
+    }
+  })
+
+  $("#user_name").on('input', function(){
+    if($("#user_name").val().length>3){
+      $("#join_end").animate({opacity:1},1);
+    }else{
+      $("#join_end").animate({opacity:0.5},1);
     }
   })
 });

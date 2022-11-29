@@ -25,7 +25,7 @@
   width: 120px;
   line-height: 47px;
 }
-a.on{
+.tap-menu ul li a.on{
   background-color: #eeeeee90;
   color: #f7323f;
   font-weight: bold;

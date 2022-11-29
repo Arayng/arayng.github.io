@@ -179,3 +179,9 @@ input[type="number"]::-webkit-inner-spin-button {
   background: #5694f0;
   color: #fff;
 }
+/* admin */
+.admin-btn{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}

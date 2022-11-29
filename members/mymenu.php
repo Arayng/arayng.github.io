@@ -1,19 +1,17 @@
 <?php
-  include "../inc/session.php";
-  include "../inc/dbcon.php";
+  include $_SERVER["DOCUMENT_ROOT"]."/inc/session.php";
+  include $_SERVER["DOCUMENT_ROOT"]."/inc/dbcon.php";
+  include $_SERVER["DOCUMENT_ROOT"]."/inc/loginChk.php";
   $sql = "select * from members where u_id='$s_id';";
   $pm = mysqli_query($dbcon,$sql);
   $result = mysqli_fetch_array($pm);
-
   $sql = "select left(u_tel, 3) as tel1 from members where u_id='$s_id'";
   $pm = mysqli_query($dbcon,$sql);
   $tel1 = mysqli_fetch_array($pm);
   $sql = "select right(u_tel, 4) as tel2 from members where u_id='$s_id'";
   $pm = mysqli_query($dbcon,$sql);
   $tel2 = mysqli_fetch_array($pm);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,16 +19,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여기어때 - 내 정보</title>
-  <?php include "../inc/src_in.php";?>
-  <link rel="stylesheet" href="../css/mylayout.css">
-  <link rel="stylesheet" href="../css/mymenu.css">
-  <script src="../js/mymenu.js"></script>
+  <?php include $_SERVER["DOCUMENT_ROOT"]."/inc/src.php";?>
+  <link rel="stylesheet" href="//localhost/css/mylayout.css">
+  <link rel="stylesheet" href="//localhost/css/mymenu.css">
+  <script src="//localhost/js/mymenu.js"></script>
 </head>
 </head>
 <body>
-  <!-- 헤더영역 -->
-  <?php include "../inc/header_in.php";?>
-  <!-- 컨텐츠 영역 -->
+<!-- 헤더영역 -->
+  <?php include $_SERVER["DOCUMENT_ROOT"]."/inc/header.php";?>
+<!-- 컨텐츠 영역 -->
   <div class="box">
       <h2 class="p_title">내 정보</h2>
   </div>
@@ -41,10 +39,12 @@
         <li><a href="coupon.php" class="">쿠폰함</a></li>
         <li><a href="myreview.php" class="">작성 리뷰 관리</a></li>
         <li><a href="reservations.php" class="">예약 내역</a></li>
+        <?php if($s_id == 'admin@admin'){?>
+          <li><a href="#" class="">회원 관리</a></li>
+        <?php };?>
       </ul>
     </section>
-
-    <!-- 컨텐츠 -->
+<!-- 컨텐츠 -->
     <section class="content">
       <div class="cont-box profile-box">
         <h3>프로필</h3>
@@ -55,7 +55,7 @@
               <div class="default-img"></div>
           <?php };?>
         </div>
-        <form action="profile.php" method="post" enctype=multipart/form-data id="profile_form" style="display:block">
+        <form action="mymenuProfile.php" method="post" enctype=multipart/form-data id="profile_form" style="display:block">
           <div class="profile-btngroup">
             <label for="profile_change" class="profile-change-btn">찾아보기</label>
             <input type="file" name="profile_change" id="profile_change" class="profile-change-btn-hide">
@@ -70,7 +70,7 @@
           <div class="info"><p id="name-now"><?php echo $result["u_name"];?></p></div>
           <button type="button" class="profile-change-btn" id="name_btn">변경하기</button>
         </div>
-        <form action="change.php" method="post" id="name_change" onsubmit="return name_update()">
+        <form action="mymenuChange.php" method="post" id="name_change" onsubmit="return name_update()">
           <fieldset class="name-change-box">
             <legend>별명 변경</legend>
             <input type="hidden" name="case" value="nickname">
@@ -89,7 +89,7 @@
           <div class="info"><p id="user-now"><?php echo $result["reservation"];?></p></div>
           <button type="button" class="profile-change-btn" id="user_btn">변경하기</button>
         </div>
-        <form action="change.php" method="post" id="user_change" onsubmit="return user_update()">
+        <form action="mymenuChange.php" method="post" id="user_change" onsubmit="return user_update()">
           <fieldset class="user-change-box">
             <legend>예약자 이름 변경</legend>
             <input type="hidden" name="case" value="user">
@@ -108,7 +108,7 @@
           <div class="info"><p id="tel-now"><?php echo $tel1["tel1"];?>-****-<?php echo $tel2["tel2"];?></p></div>
           <button type="button" class="profile-change-btn" id="tel_btn">변경하기</button>
         </div>
-        <form action="change.php" method="post" id="tel_change" onsubmit="return tel_update()">
+        <form action="mymenuChange.php" method="post" id="tel_change" onsubmit="return tel_update()">
           <fieldset class="tel-change-box">
             <legend>전화번호 변경</legend>
             <input type="hidden" name="case" value="tel">
@@ -130,5 +130,7 @@
       <button type="button" class="signout-btn">회원탈퇴</button>
     </section>
   </div>
+<!-- 푸터영역 -->
+  <?php include $_SERVER["DOCUMENT_ROOT"]."/inc/footer.php";?>
 </body>
 </html>
